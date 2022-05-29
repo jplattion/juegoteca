@@ -77,8 +77,8 @@ function busquedaEdad() {
     }
 }
 
-if (localStorage.getItem('guardados') == null) {
-    localStorage.setItem('guardados','[]');
+if (localStorage.getItem('favoritos') == null) {
+    localStorage.setItem('favoritos','[]');
 }
 
 function juntarFavoritos() {
@@ -95,7 +95,9 @@ function juntarFavoritos() {
 function localStorageSet(id) {
     const nuevolocal = localStorageGet();
     nuevolocal.push(id)
-    localStorage.setItem('guardados', JSON.stringify(nuevolocal));
+    console.log(id);
+    console.log(typeof id);
+    localStorage.setItem('favoritos', JSON.stringify(nuevolocal));
     Swal.fire(
         'Juego guardado.',
         'Se ha guardado el juego en favorito.',
@@ -109,8 +111,7 @@ function localStorageRemove(id) {
     let index = arrayId.indexOf(id);
     if (index > -1) {
         arrayId.splice(index, 1);
-        console.log(arrayId);
-        localStorage.setItem("guardados", JSON.stringify(arrayId));
+        localStorage.setItem("favoritos", JSON.stringify(arrayId));
         Swal.fire(
             'Juego removido',
             'El juego ya no esta en favoritos.',
@@ -127,7 +128,7 @@ function localStorageRemove(id) {
 }
 
 function localStorageGet() {
-    let juegosFavoritos = JSON.parse(localStorage.getItem('guardados'));
+    let juegosFavoritos = JSON.parse(localStorage.getItem('favoritos'));
     return juegosFavoritos;
 }
 
