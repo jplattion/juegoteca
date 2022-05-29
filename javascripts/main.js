@@ -1,16 +1,20 @@
 const contenedor = document.querySelector('#contenedor');
-const juegosAlfabeticos = juegos.sort(ordenarAlfabeticamente);
+let juegosAlfabeticos = []
 let juegosFavoritos = [];
+let requestOptions = {
+    method: 'GET',
+    redirect: 'follow'
+    };
 
+fetch("../json/dbJuegos.json", requestOptions)
+    .then(response => response.json())
+    .then(result => {juegosAlfabeticos = result.sort()})
+    .catch(error => console.log('error', error));
 
 document.querySelector('#btnIndice').onclick = () => { resetView(), indice()};
 document.querySelector('#btnJuegos').onclick = () => { resetView(), renderJuegos(juegosAlfabeticos)};
 document.querySelector('#btnVerFavorito').onclick = () => { resetView(), renderJuegos(juntarFavoritos)};
 document.querySelector("#btnVerFavorito").onclick = () => { resetView(), renderJuegos(juntarFavoritos())};
-
-function ordenarAlfabeticamente(a, b) {
-    return a.nombreJuego.localeCompare(b.nombreJuego);
-}
 
 function resetView(){
     while (contenedor.hasChildNodes()){
@@ -39,13 +43,13 @@ function renderJuegos(listaJuegos){
         <p>Edad minima recomendada: ${juego.edadJugadores}</p>
         <p>Dificultad: ${juego.dificultadJuego}</p>
         <a href=${juego.linkJuego} target="_blank" class="text-center btn btn-primary">Link a la BGG</a>
-        <button id="${juego.id}" onclick="localStorageSet(id)" class="text-center btn btn-primary guardarJuego">Guardar</button>
-        <button id="${juego.id}" onclick="localStorageRemove(id)" class="text-center btn btn-primary guardarJuego">Quitar de Favoritos</button>
+        <button id="${juego.id}" onclick="localStorageSet(id)" class="text-center btn btn-primary">Guardar</button>
+        <button id="${juego.id}" onclick="localStorageRemove(id)" class="text-center btn btn-primary">Quitar de Favoritos</button>
         </li>`
         );
-        let imgSelector = document.getElementById(juego.id);
-        imgSelector.addEventListener("mouseover", () => (imgSelector.src = `${juego.imagenJuego2}`));
-        imgSelector.addEventListener("mouseout", () => (imgSelector.src = `${juego.imagenJuego}`));
+        // let imgSelector = document.getElementById(juego.id);
+        // imgSelector.addEventListener("mouseover", () => (imgSelector.src = `${juego.imagenJuego2}`));
+        // imgSelector.addEventListener("mouseout", () => (imgSelector.src = `${juego.imagenJuego}`));
     }
 }
 
@@ -63,17 +67,19 @@ function busquedaNombre() {
 
 function busquedaCantidad() {
     let input = document.querySelector('#inputCantidadJugadores').value;
+    let inputNumber = Number(input)
     let li = document.querySelectorAll('#listado li');
     for (i = 0; i < li.length; i += 1){
-        ((input >= juegos[i].cantidadMinJugadores) && (input <=juegos[i].cantidadMaxJugadores)) ? li[i].style.display = "" : li[i].style.display = "none";
+        ((inputNumber >= juegosAlfabeticos[i].cantidadMinJugadores) && (inputNumber <=juegosAlfabeticos[i].cantidadMaxJugadores)) ? li[i].style.display = "" : li[i].style.display = "none";
     }
 }
 
 function busquedaEdad() {
     let input = document.querySelector('#inputEdad').value;
+    let inputNumber = Number(input)
     let li = document.querySelectorAll('#listado li');
     for (i = 0; i < li.length; i += 1){
-        (input >= juegos[i].edadJugadores) ? li[i].style.display = "" : li[i].style.display = "none";
+        (inputNumber >= juegosAlfabeticos[i].edadJugadores) ? li[i].style.display = "" : li[i].style.display = "none";
     }
 }
 
@@ -90,13 +96,9 @@ function juntarFavoritos() {
     return todosFavoritos;
 }
 
-
-
 function localStorageSet(id) {
     const nuevolocal = localStorageGet();
     nuevolocal.push(id)
-    console.log(id);
-    console.log(typeof id);
     localStorage.setItem('favoritos', JSON.stringify(nuevolocal));
     Swal.fire(
         'Juego guardado.',
@@ -131,4 +133,3 @@ function localStorageGet() {
     let juegosFavoritos = JSON.parse(localStorage.getItem('favoritos'));
     return juegosFavoritos;
 }
-

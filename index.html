@@ -17,6 +17,9 @@
         <p class="d-flex justify-content-center">Bienvenido a mi juegoteca</p>
         <p class="d-flex justify-content-center">Mira los juegos que tenemos y selecciona los que quieras probar la
             proxima juntada</p>
+
+        <!-- agregar opcion de tags -->
+
         <div class="d-flex justify-content-center">
             <button id="btnIndice">Indice</button>
             <button id="btnJuegos">Juegos</button>
@@ -26,10 +29,10 @@
         <input type="text" id="inputNombre" onkeyup="busquedaNombre()">
 
         <p class="d-flex justify-content-center">Buscar por cantidad de jugadores</p>
-        <input type="number" onkeyup="busquedaCantidad()" id="inputCantidadJugadores">
+        <input type="number" onkeyup="busquedaCantidad()" id="inputCantidadJugadores" min="0" max="100">
 
         <p class="d-flex justify-content-center">Buscar por edad</p>
-        <input type="number" id="inputEdad" onkeyup="busquedaEdad()">
+        <input type="number" id="inputEdad" onkeyup="busquedaEdad()" min="0" max="18">
 
     </header>
     <main>
@@ -47,11 +50,11 @@
         integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous">
     </script>
     <!-- Array/Base de datos -->
-    <script src="./javascripts/juegos.js"></script>
+    <!-- <script src="./javascripts/juegos.js"></script> -->
     <!-- JS principal -->
     <script src="./javascripts/main.js"></script>
-    <script src="./javascripts/api.js"></script>
-    
+    <!-- <script src="./javascripts/api.js"></script> -->
+
 </body>
 
 </html>
