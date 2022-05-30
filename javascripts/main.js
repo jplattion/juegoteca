@@ -98,18 +98,26 @@ function juntarFavoritos() {
 
 function localStorageSet(id) {
     const nuevolocal = localStorageGet();
-    nuevolocal.push(id)
-    localStorage.setItem('favoritos', JSON.stringify(nuevolocal));
-    Swal.fire(
-        'Juego guardado.',
-        'Se ha guardado el juego en favorito.',
-        'success'
-    )
+    console.log(nuevolocal)
+    if (nuevolocal.indexOf(id) !== -1){
+        Swal.fire(
+            'Error',
+            'El juego ya esta en favoritos.',
+            'error'
+        )
+    } else {
+        nuevolocal.push(id)
+        localStorage.setItem('favoritos', JSON.stringify(nuevolocal));
+        Swal.fire(
+            'Juego guardado.',
+            'Se ha guardado el juego en favorito.',
+            'success'
+        )
+    }
 }
 
 function localStorageRemove(id) {
     const arrayId = localStorageGet();
-    console.log(arrayId);
     let index = arrayId.indexOf(id);
     if (index > -1) {
         arrayId.splice(index, 1);
