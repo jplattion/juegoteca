@@ -36,22 +36,20 @@ function renderJuegos(listaJuegos){
     for (const juego of listaJuegos){
         listado.insertAdjacentHTML('beforeend', 
         `<li class="card col-2 tarjeta">
-        <h2 class="titulo text-center">${juego.nombreJuego}</h2>
-        <img id="${juego.id}" class="imagen" src=${juego.imagenJuego} alt="Tapa del juego" class="card-img-top">
-        <p class="jugadoresMin">Cant. min. de jugadores: ${juego.cantidadMinJugadores}</p>
-        <p class="jugadoresMax">Cant. max. de jugadores: ${juego.cantidadMaxJugadores}</p>
-        <p>Edad minima recomendada: ${juego.edadJugadores}</p>
-        <p>Dificultad: ${juego.dificultadJuego}</p>
-        <a href=${juego.linkJuego} target="_blank" class="text-center btn btn-primary">Link a la BGG</a>
-        <button id="${juego.id}" onclick="localStorageSet(id)" class="text-center btn btn-primary">Guardar</button>
-        <button id="${juego.id}" onclick="localStorageRemove(id)" class="text-center btn btn-primary">Quitar de Favoritos</button>
+            <h2 class="titulo text-center">${juego.nombreJuego}</h2>
+            <img id="${juego.id}" class="imagen" src=${juego.imagenJuego} alt="Tapa del juego" class="card-img-top">
+            <p class="jugadoresMin">Cant. mín. de jugadores: ${juego.cantidadMinJugadores}</p>
+            <p class="jugadoresMax">Cant. máx. de jugadores: ${juego.cantidadMaxJugadores}</p>
+            <p>Edad mínima recomendada: ${juego.edadJugadores}</p>
+            <p>Dificultad: ${juego.dificultadJuego}</p>
+            <a href=${juego.linkJuego} target="_blank" class="text-center btn btn-primary">Link a la BGG</a>
+            <button id="${juego.id}" onclick="localStorageSet(id)" class="text-center btn btn-primary">Guardar</button>
+            <button id="${juego.id}" onclick="localStorageRemove(id)" class="text-center btn btn-primary">Quitar de Favoritos</button>
         </li>`
         );
-        // let imgSelector = document.getElementById(juego.id);
-        // imgSelector.addEventListener("mouseover", () => (imgSelector.src = `${juego.imagenJuego2}`));
-        // imgSelector.addEventListener("mouseout", () => (imgSelector.src = `${juego.imagenJuego}`));
     }
 }
+
 
 function busquedaNombre() {
     let input = document.querySelector('#inputNombre');
