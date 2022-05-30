@@ -6,7 +6,7 @@ let requestOptions = {
     redirect: 'follow'
     };
 
-fetch("./json/dbJuegos.json", requestOptions)
+fetch("../json/dbJuegos.json", requestOptions)
     .then(response => response.json())
     .then(result => {juegosAlfabeticos = result.sort()})
     .catch(error => console.log('error', error));
