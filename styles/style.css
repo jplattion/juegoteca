@@ -45,29 +45,3 @@ li{
     font-size: 1rem;
     margin: 2px 0 2px 0;
 }
-
-#videoPopup{
-    width:75%;
-    margin:0 auto;
-}
-
-#videoPopup iframe{
-    width:100%;
-    margin:0 auto;
-    filter: invert(1);
-    max-width: 32px;
-    visibility: hidden;
-    opacity: 0;
-}
-
-iframe .active{
-    visibility: visible;
-    opacity: 1;
-}
-
-.close{
-    position: absolute;
-    top: 30px;
-    right: 30px;
-    cursor: pointer;
-}
