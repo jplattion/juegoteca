@@ -50,7 +50,6 @@ function renderJuegos(listaJuegos){
     }
 }
 
-
 function busquedaNombre() {
     let input = document.querySelector('#inputNombre');
     let filtro = input.value.toUpperCase();
