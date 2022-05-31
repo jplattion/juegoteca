@@ -6,10 +6,10 @@ let requestOptions = {
     redirect: 'follow'
     };
 
-fetch("../json/dbJuegos.json", requestOptions)
+fetch("/json/dbJuegos.json", requestOptions)
     .then(response => response.json())
     .then(result => {juegosAlfabeticos = result.sort()})
-    //.catch(error => console.log('error', error));
+    .catch(error => console.log('error', error));
 
 document.querySelector('#btnIndice').onclick = () => { resetView(), indice()};
 document.querySelector('#btnJuegos').onclick = () => { resetView(), renderJuegos(juegosAlfabeticos)};
