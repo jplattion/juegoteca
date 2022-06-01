@@ -8,23 +8,14 @@ let requestOptions = {
 
 fetch("./json/dbJuegos.json", requestOptions)
   .then((response) => response.json())
-  .then((result) => {
-    juegosAlfabeticos = result.sort();
-  })
+  .then((result) => {juegosAlfabeticos = result.sort();})
   .catch((error) => console.log("error", error));
 
-document.querySelector("#btnIndice").onclick = () => {
-  resetView(), indice();
-};
-document.querySelector("#btnJuegos").onclick = () => {
-  resetView(), renderJuegos(juegosAlfabeticos);
-};
-document.querySelector("#btnVerFavorito").onclick = () => {
-  resetView(), renderJuegos(juntarFavoritos);
-};
-document.querySelector("#btnVerFavorito").onclick = () => {
-  resetView(), renderJuegos(juntarFavoritos());
-};
+document.querySelector("#btnIndice").onclick = () => {resetView(), indice();};
+document.querySelector("#btnJuegos").onclick = () => {resetView(), renderJuegos(juegosAlfabeticos);};
+document.querySelector("#btnVerFavorito").onclick = () => {resetView(), renderJuegos(juntarFavoritos);};
+document.querySelector("#btnVerFavorito").onclick = () => {resetView(), renderJuegos(juntarFavoritos());};
+
 
 function resetView() {
   while (contenedor.hasChildNodes()) {
@@ -46,13 +37,33 @@ function renderJuegos(listaJuegos) {
   for (const juego of listaJuegos) {
     listado.insertAdjacentHTML(
       "beforeend",
-      `<li class="card col-6 tarjeta">
+      `<li class="card col-12 tarjeta">
 			<h2 class="titulo text-center">${juego.nombreJuego}</h2>
 			<img id="${juego.id}" class="imagen" src=${juego.imagenJuego} alt="Tapa del juego" class="card-img-top">
-			<p class="jugadoresMin">Cant. mín. de jugadores: ${juego.cantidadMinJugadores}</p>
-			<p class="jugadoresMax">Cant. máx. de jugadores: ${juego.cantidadMaxJugadores}</p>
-			<p>Edad mínima recomendada: ${juego.edadJugadores}</p>
-			<p>Dificultad: ${juego.dificultadJuego}</p>
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-4">
+            <img class="img-fluid" src="./images/jugadores.svg"> 
+          </div>
+          <div class="col-4">
+            <img class="img-fluid" src="./images/edad.svg"> 
+          </div>
+          <div class="col-4">
+            <img class="img-fluid" src="./images/reloj.svg"> 
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-4">
+            <p class="text-center">${juego.cantidadMinJugadores} - ${juego.cantidadMaxJugadores}</p>
+          </div>
+          <div class="col-4">
+            <p class="text-center">${juego.edadJugadores} +</p>
+          </div>
+          <div class="col-4">
+            <p class="text-center">${juego.tiempoMinJuego} + min.</p>
+          </div>
+        </div>
+      </div>
 			<a href=${juego.linkJuego} target="_blank" class="text-center btn btn-primary">Link a la BGG</a>
 			<button id="${juego.id}" onclick="localStorageSet(id)" class="text-center btn btn-success">Guardar</button>
 			<button id="${juego.id}" onclick="localStorageRemove(id)" class="text-center btn btn-danger">Quitar de Favoritos</button>
