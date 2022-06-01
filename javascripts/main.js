@@ -32,41 +32,41 @@ function indice() {
 }
 
 function renderJuegos(listaJuegos) {
-  contenedor.innerHTML = `<ul id="listado" class="row justify-content-center"></ul>`;
+  contenedor.innerHTML = `<ul id="listado" class="row container-fluid justify-content-center gx-0 p-0"></ul>`;
   let listado = document.querySelector("#listado");
   for (const juego of listaJuegos) {
     listado.insertAdjacentHTML(
       "beforeend",
-      `<li class="card col-12 tarjeta">
+      `<li class="card col-6 col-md-4 col-lg-2 tarjeta">
 			<h2 class="titulo text-center">${juego.nombreJuego}</h2>
 			<img id="${juego.id}" class="imagen" src=${juego.imagenJuego} alt="Tapa del juego" class="card-img-top">
       <div class="container">
-        <div class="row justify-content-center">
+        <div class="row justify-content-center align-items-center">
           <div class="col-4">
-            <img class="img-fluid" src="./images/jugadores.svg"> 
+            <img class="img-fluid" src="./images/jugadores.svg" alt="cantidad de jugadores"> 
           </div>
           <div class="col-4">
-            <img class="img-fluid" src="./images/edad.svg"> 
+            <img class="img-fluid" src="./images/edad.svg" alt="edad recomendada"> 
           </div>
           <div class="col-4">
-            <img class="img-fluid" src="./images/reloj.svg"> 
+            <img class="img-fluid" src="./images/reloj.svg" alt="tiempo minimo de juego"> 
           </div>
         </div>
-        <div class="row justify-content-center">
+        <div class="row justify-content-center align-items-center">
           <div class="col-4">
-            <p class="text-center">${juego.cantidadMinJugadores} - ${juego.cantidadMaxJugadores}</p>
+            <p class="text-center info">${juego.cantidadMinJugadores} - ${juego.cantidadMaxJugadores}</p>
           </div>
           <div class="col-4">
-            <p class="text-center">${juego.edadJugadores} +</p>
+            <p class="text-center info">${juego.edadJugadores} +</p>
           </div>
           <div class="col-4">
-            <p class="text-center">${juego.tiempoMinJuego} + min.</p>
+            <p class="text-center info">${juego.tiempoMinJuego} min+</p>
           </div>
         </div>
       </div>
-			<a href=${juego.linkJuego} target="_blank" class="text-center btn btn-primary">Link a la BGG</a>
-			<button id="${juego.id}" onclick="localStorageSet(id)" class="text-center btn btn-success">Guardar</button>
-			<button id="${juego.id}" onclick="localStorageRemove(id)" class="text-center btn btn-danger">Quitar de Favoritos</button>
+      <a href=${juego.linkJuego} target="_blank" class="text-center btn btn-primary">Link a la BGG</a>
+      <button id="${juego.id}" onclick="localStorageSet(id)" class="text-center btn btn-success">Guardar</button>
+      <button id="${juego.id}" onclick="localStorageRemove(id)" class="text-center btn btn-danger">Quitar de Favoritos</button>
 		</li>`
     );
   }

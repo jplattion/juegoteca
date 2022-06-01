@@ -3,15 +3,19 @@
 
 .card{
 	background-color: gray;
-	margin: 0.5rem;
-	padding: 0.5rem;
+	// margin: 0.5rem;
+	// padding: 0.5rem;
 	border: 2px solid black;
 	border-radius: 20px;
 }
 
-.contenedor{
-	margin: 2rem 0 2rem 0;
+.tarjeta{
+	padding: 0.5rem;
 }
+
+// .contenedor{
+// 	margin: 2rem 0 2rem 0;
+// }
 
 .imagen{
 	width: 100%;
@@ -37,4 +41,17 @@ li{
 .indice{
 	font-size: 1rem;
 	margin: 2px 0 2px 0;
+}
+
+ul{
+	margin: 0 1rem 0 1rem;
+}
+
+h2{
+	font-size: 1rem;
+	font-weight: 600;
+}
+
+.info{
+	font-size: .8rem;
 }
