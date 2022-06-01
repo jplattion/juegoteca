@@ -2,43 +2,39 @@
 @import "estructura";
 
 .card{
-    background-color: gray;
-    margin: 0.5rem;
-    padding: 0.5rem;
-    border: 2px solid black;
-    border-radius: 20px;
+	background-color: gray;
+	margin: 0.5rem;
+	padding: 0.5rem;
+	border: 2px solid black;
+	border-radius: 20px;
 }
 
 .contenedor{
-    margin: 2rem 0 2rem 0;
+	margin: 2rem 0 2rem 0;
 }
 
 .imagen{
-    width: 100%;
-}
-
-.btn-primary{
-    width: 130px;
+	width: 100%;
 }
 
 .titulo{
-    background-color:aquamarine;
-    justify-items: center;
-    padding: 10px;
-    border-radius: 20px;
+	background-color:aquamarine;
+	justify-items: center;
+	padding: 10px;
+	border-radius: 20px;
 }
 
 #contenedor p{
-    display: flex;
-    justify-content: center;
-    margin: 0px;
+	display: flex;
+	justify-content: center;
+	margin: 0px;
 }
 
 li{
-    list-style-type: none;
+	list-style-type: none;
 }
 
 .indice{
-    font-size: 1rem;
-    margin: 2px 0 2px 0;
+	font-size: 1rem;
+	margin: 2px 0 2px 0;
 }
