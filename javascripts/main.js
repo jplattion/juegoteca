@@ -115,7 +115,6 @@ function juntarFavoritos() {
 
 function localStorageSet(id) {
   const nuevolocal = localStorageGet();
-  console.log(nuevolocal);
   if (nuevolocal.indexOf(id) !== -1) {
     Swal.fire("Error", "El juego ya esta en favoritos.", "error");
   } else {
