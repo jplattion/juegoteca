@@ -45,8 +45,8 @@ function renderJuegos(listaJuegos) {
 	let listado = document.querySelector("#listado");
 	for (const juego of listaJuegos) {
 		listado.insertAdjacentHTML(
-			"beforeend",
-			`<li class="card col tarjeta">
+      "beforeend",
+      `<li class="card col tarjeta">
 			<h2 class="titulo text-center">${juego.nombreJuego}</h2>
 			<img id="${juego.id}" class="imagen" src=${juego.imagenJuego} alt="Tapa del juego" class="card-img-top">
       <div class="container">
@@ -62,22 +62,18 @@ function renderJuegos(listaJuegos) {
           </div>
         </div>
         <div class="row justify-content-center align-items-center">
-          <div class="col-4">
-            <p class="text-center info">${juego.cantidadMinJugadores}-${juego.cantidadMaxJugadores}</p>
-          </div>
-          <div class="col-4">
-            <p class="text-center info">${juego.edadJugadores} +</p>
-          </div>
-          <div class="col-4">
-            <p class="text-center info">${juego.tiempoMinJuego}/${juego.tiempoMaxJuego}</p>
-          </div>
+          <div class="col-4 text-center info">${juego.cantidadMinJugadores}-${juego.cantidadMaxJugadores}</div>
+          <div class="col-4 text-center info">${juego.edadJugadores}+</div>
+          <div class="col-4 text-center info">${juego.tiempoMinJuego}/${juego.tiempoMaxJuego}</div>
         </div>
       </div>
-      <a href=${juego.linkJuego} target="_blank" class="text-center btn btn-primary">Link a la BGG</a>
-      <button id="${juego.id}" onclick="localStorageSet(id)" class="text-center btn btn-success">Guardar</button>
-      <button id="${juego.id}" onclick="localStorageRemove(id)" class="text-center btn btn-danger">Quitar de Favoritos</button>
+			<div>
+				<a href=${juego.linkJuego} target="_blank" class="text-center btn btn-primary">Link a la BGG</a>
+				<button id="${juego.id}" onclick="localStorageSet(id)" class="text-center btn btn-success">Guardar</button>
+				<button id="${juego.id}" onclick="localStorageRemove(id)" class="text-center btn btn-danger">Quitar de Favoritos</button>
+			</div>
 		</li>`
-		);
+    )
 	}
 }
 
