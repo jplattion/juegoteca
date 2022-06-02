@@ -1,57 +1,53 @@
 @import "variables";
 @import "estructura";
 
-.card{
+.card {
 	background-color: gray;
-	// margin: 0.5rem;
-	// padding: 0.5rem;
+	margin: 0.5rem;
+	padding: 0.5rem;
 	border: 2px solid black;
 	border-radius: 20px;
+	min-width: 150px;
+	max-width: 175px;
 }
 
-.tarjeta{
-	padding: 0.5rem;
-}
-
-// .contenedor{
-// 	margin: 2rem 0 2rem 0;
-// }
-
-.imagen{
-	width: 100%;
-}
-
-.titulo{
-	background-color:aquamarine;
+.titulo {
+	background-color: aquamarine;
 	justify-items: center;
 	padding: 10px;
 	border-radius: 20px;
 }
 
-#contenedor p{
+#contenedor p {
 	display: flex;
-	justify-content: center;
+	// justify-content: center;
 	margin: 0px;
+	width: 100%;
 }
 
-li{
+li {
 	list-style-type: none;
 }
 
-.indice{
+.tarjetaIndice{
+	background-color: gray;
+	margin: 0.5rem;
+	padding: 0.5rem;
+	border: 3px solid black;
+	border-radius: 20px;
+	width: 80%;
+}
+
+.indice {
 	font-size: 1rem;
 	margin: 2px 0 2px 0;
 }
 
-ul{
-	margin: 0 1rem 0 1rem;
-}
-
-h2{
+h2 {
 	font-size: 1rem;
 	font-weight: 600;
 }
 
-.info{
+.info {
 	font-size: .8rem;
 }
