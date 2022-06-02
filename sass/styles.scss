@@ -12,10 +12,20 @@
 }
 
 .titulo {
+	display: flex;
 	background-color: aquamarine;
-	justify-items: center;
 	padding: 10px;
 	border-radius: 20px;
+	align-items: center;
+	justify-content: center;
+}
+
+.contenedorImagen{
+	height: 250px;
+}
+
+.imagen{
+	max-height: 250px;
 }
 
 #contenedor p {
@@ -45,11 +55,12 @@ li {
 h2 {
 	font-size: 1rem;
 	font-weight: 600;
+	padding: 1rem;
+	height: 80px;
 }
 
 .info {
 	font-size: 0.7rem;
-
 }
 
 .btn{

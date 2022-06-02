@@ -48,9 +48,11 @@ function renderJuegos(listaJuegos) {
       "beforeend",
       `<li class="card col tarjeta">
 			<h2 class="titulo text-center">${juego.nombreJuego}</h2>
-			<img id="${juego.id}" class="imagen" src=${juego.imagenJuego} alt="Tapa del juego" class="card-img-top">
+			<div class="contenedorImagen container-fluid d-flex align-items-center">
+				<img id="${juego.id}" class="imagen img-fluid" src=${juego.imagenJuego} alt="Tapa del juego" class="card-img-top">
+			</div>
       <div class="container">
-        <div class="row justify-content-center align-items-center">
+        <div class="row justify-content-center align-items-center gx-0">
           <div class="col-4">
             <img class="img-fluid" src="./images/jugadores.svg" alt="cantidad de jugadores"> 
           </div>
@@ -61,7 +63,7 @@ function renderJuegos(listaJuegos) {
             <img class="img-fluid" src="./images/reloj.svg" alt="tiempo minimo de juego"> 
           </div>
         </div>
-        <div class="row justify-content-center align-items-center">
+        <div class="row justify-content-center align-items-center gx-0">
           <div class="col-4 text-center info">${juego.cantidadMinJugadores}-${juego.cantidadMaxJugadores}</div>
           <div class="col-4 text-center info">${juego.edadJugadores}+</div>
           <div class="col-4 text-center info">${juego.tiempoMinJuego}/${juego.tiempoMaxJuego}</div>
