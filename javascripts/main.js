@@ -36,7 +36,7 @@ function indice() {
 	contenedor.innerHTML = `<ul id="listado" class="container tarjetaIndice"></ul>`;
 	let card = document.querySelector(".tarjetaIndice");
 	for (let i = 0; i < juegosAlfabeticos.length; i += 1) {
-		card.innerHTML += `<li><h2 class="indice text-center ">${juegosAlfabeticos[i].nombreJuego}</h2></li>`;
+		card.innerHTML += `<li><h3 class="indice text-center ">${juegosAlfabeticos[i].nombreJuego}</h2></li>`;
 	}
 }
 
