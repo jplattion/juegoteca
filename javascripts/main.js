@@ -63,7 +63,7 @@ function renderJuegos(listaJuegos) {
         </div>
         <div class="row justify-content-center align-items-center">
           <div class="col-4">
-            <p class="text-center info">${juego.cantidadMinJugadores} - ${juego.cantidadMaxJugadores}</p>
+            <p class="text-center info">${juego.cantidadMinJugadores}-${juego.cantidadMaxJugadores}</p>
           </div>
           <div class="col-4">
             <p class="text-center info">${juego.edadJugadores} +</p>
