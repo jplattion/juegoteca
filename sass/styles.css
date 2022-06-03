@@ -73,4 +73,8 @@ h2 {
 .btn {
   width: 100%;
   font-size: 0.8rem;
+}
+
+.hide {
+  display: none;
 }/*# sourceMappingURL=styles.css.map */

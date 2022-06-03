@@ -49,8 +49,8 @@ function renderJuegos(listaJuegos) {
 	let listado = document.querySelector("#listado");
 	for (const juego of listaJuegos) {
 		listado.insertAdjacentHTML(
-			"beforeend",
-			`<li class="card col tarjeta">
+      "beforeend",
+      `<li class="card col tarjeta">
 			<h2 class="titulo text-center">${juego.nombreJuego}</h2>
 			<div class="contenedorImagen container-fluid d-flex align-items-center">
 				<img id="${juego.id}" class="imagen img-fluid" src=${juego.imagenJuego} alt="Tapa del juego" class="card-img-top">
@@ -76,27 +76,28 @@ function renderJuegos(listaJuegos) {
 			<div>
 				<a href=${juego.linkJuego} target="_blank" class="text-center btn btn-primary">Link a la BGG</a>
 				<button id="${juego.id}" onclick="localStorageSet(id); showHideBtn(id)" class="text-center btn btn-success">Guardar</button>
-				<button id="${juego.id}" onclick="localStorageRemove(id); showHideBtn(id)" class="text-center btn btn-danger d-none">Quitar de Favoritos</button>
+				<button id="${juego.id}" onclick="localStorageRemove(id); showHideBtn(id)" class="text-center btn btn-danger hide">Quitar de Favoritos</button>
 			</div>
 		</li>`
-		);
+    )
 		// showHideBtn(juego.id);
 	}
 }
 
 function showHideBtn(id) {
-	const btn1 = document.getElementsByClassName("btn-success");
-	const btn2 = document.getElementsByClassName("btn-danger");
+	const btn1 = document.getElementsByClassName("btn-success")[0].classList;
+	const btn2 = document.getElementsByClassName("btn-danger")[0].classList;
 	console.log(btn1);
 	console.log(btn2);
 	const btnSelector = localStorageGet();
+	// btn1 = ((btnSelector.indexOf(id) !== -1) ? (btn1.className += " d-none") : null);
+	// btn2 = ((btnSelector.indexOf(id) !== -1) ? (btn2.className -= " d-none") : null);
 	if (btnSelector.indexOf(id) !== -1) {
-		// btn2.classList.remove("d-none");
-	}
-	// else {
-	// 	btn1.classList.remove("d-none");
-	// 	btn2.classList.add("d-none");
-	// }
+		btn1.add("hide");
+		btn2.remove("hide");
+		// btn1.classList.toggle("d-none");
+		// btn2.classList.toogle("d-none");
+	} 
 }
 
 function busquedaNombre() {
