@@ -1,4 +1,5 @@
 const contenedor = document.querySelector("#contenedor");
+let select;
 let juegosAlfabeticos = [];
 let juegosFavoritos = [];
 let requestOptions = {
@@ -21,10 +22,10 @@ document.querySelector("#btnIndice").onclick = () => {
 	resetView(), indice();
 };
 document.querySelector("#btnJuegos").onclick = () => {
-	resetView(), renderJuegos(juegosAlfabeticos);
+	resetView(), renderJuegos(juegosAlfabeticos), (select = "juegos");
 };
 document.querySelector("#btnVerFavorito").onclick = () => {
-	resetView(), renderJuegos(juntarFavoritos());
+	resetView(), renderJuegos(juntarFavoritos()), (select = "favoritos");
 };
 
 function resetView() {
@@ -164,10 +165,12 @@ function localStorageRemove(id) {
 		arrayId.splice(index, 1);
 		localStorage.setItem("favoritos", JSON.stringify(arrayId));
 		Swal.fire("Juego removido", "El juego ya no esta en favoritos.", "warning");
-		if (condition) {
+		if (select == "juegos") {
 			renderJuegos(juegosAlfabeticos);
+			console.log(select);
 		} else {
 			renderJuegos(juntarFavoritos());
+			console.log(select);
 		}
 	} else {
 		Swal.fire("Error", "El juego no se encontraba en favoritos.", "error");
