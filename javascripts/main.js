@@ -74,7 +74,7 @@ function renderJuegos(listaJuegos) {
       </div>
 			<div>
 				<a href=${juego.linkJuego} target="_blank" class="text-center btn btn-primary">Link a la BGG</a>
-				<button id="${juego.id}" onclick="showVideo(video)" class="text-center btn btn-info">Video</button>
+				<button id="${juego.id}" onclick="showVideo(id)" class="text-center btn btn-info">Video</button>
 				<button id="${juego.id}" onclick="localStorageSet(id)" class="text-center btn btn-success">Guardar</button>
 				<button id="${juego.id}" onclick="localStorageRemove(id)" class="text-center btn btn-danger">Quitar de Favoritos</button>
 
@@ -82,7 +82,6 @@ function renderJuegos(listaJuegos) {
 		</li>`
 		);
 		video = juego.linkVideo;
-		console.log(video);
 		const btn1 = document.querySelectorAll(".btn-success");
 		const btn2 = document.querySelectorAll(".btn-danger");
 		const btnSelector = localStorageGet();
@@ -187,12 +186,11 @@ function localStorageGet() {
 	return juegosFavoritos;
 }
 
-function showVideo(video) {
-	array.forEach((vi) => {});
+function showVideo(id) {
 	console.log(video);
 	Swal.fire({
 		title: "Video Explicativo",
-		html: `<iframe width="400" height="315" src="${video}" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope" allowfullscreen></iframe>`,
+		html: `<iframe width="400" height="315" src="${juego.likVideo}" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope" allowfullscreen></iframe>`,
 		showCloseButton: true,
 		focusConfirm: false,
 		confirmButtonText: '<i class="fa fa-thumbs-up"></i> Cerrar',
