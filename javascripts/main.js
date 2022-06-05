@@ -24,9 +24,6 @@ document.querySelector("#btnJuegos").onclick = () => {
 	resetView(), renderJuegos(juegosAlfabeticos);
 };
 document.querySelector("#btnVerFavorito").onclick = () => {
-	resetView(), renderJuegos(juntarFavoritos);
-};
-document.querySelector("#btnVerFavorito").onclick = () => {
 	resetView(), renderJuegos(juntarFavoritos());
 };
 
@@ -49,8 +46,8 @@ function renderJuegos(listaJuegos) {
 	let listado = document.querySelector("#listado");
 	for (const juego of listaJuegos) {
 		listado.insertAdjacentHTML(
-      "beforeend",
-      `<li class="card col tarjeta">
+			"beforeend",
+			`<li class="card col tarjeta">
 			<h2 class="titulo text-center">${juego.nombreJuego}</h2>
 			<div class="contenedorImagen container-fluid d-flex align-items-center">
 				<img id="${juego.id}" class="imagen img-fluid" src=${juego.imagenJuego} alt="Tapa del juego" class="card-img-top">
@@ -75,29 +72,25 @@ function renderJuegos(listaJuegos) {
       </div>
 			<div>
 				<a href=${juego.linkJuego} target="_blank" class="text-center btn btn-primary">Link a la BGG</a>
-				<button id="${juego.id}" onclick="localStorageSet(id); showHideBtn(id)" class="text-center btn btn-success">Guardar</button>
-				<button id="${juego.id}" onclick="localStorageRemove(id); showHideBtn(id)" class="text-center btn btn-danger hide">Quitar de Favoritos</button>
+				<button id="${juego.id}" onclick="localStorageSet(id)" class="text-center btn btn-success">Guardar</button>
+				<button id="${juego.id}" onclick="localStorageRemove(id)" class="text-center btn btn-danger">Quitar de Favoritos</button>
 			</div>
 		</li>`
-    )
-		// showHideBtn(juego.id);
+		);
+		const btn1 = document.querySelectorAll(".btn-success");
+		const btn2 = document.querySelectorAll(".btn-danger");
+		const btnSelector = localStorageGet();
+		btn1.forEach((btn) => {
+			if (btnSelector.find((favorito) => favorito == btn.id)) {
+				btn.style.display = "none";
+			}
+		});
+		btn2.forEach((btn) => {
+			if (btnSelector.find((favorito) => favorito == btn.id)) {
+				btn.style.display = "block";
+			}
+		});
 	}
-}
-
-function showHideBtn(id) {
-	const btn1 = document.getElementsByClassName("btn-success")[0].classList;
-	const btn2 = document.getElementsByClassName("btn-danger")[0].classList;
-	console.log(btn1);
-	console.log(btn2);
-	const btnSelector = localStorageGet();
-	// btn1 = ((btnSelector.indexOf(id) !== -1) ? (btn1.className += " d-none") : null);
-	// btn2 = ((btnSelector.indexOf(id) !== -1) ? (btn2.className -= " d-none") : null);
-	if (btnSelector.indexOf(id) !== -1) {
-		btn1.add("hide");
-		btn2.remove("hide");
-		// btn1.classList.toggle("d-none");
-		// btn2.classList.toogle("d-none");
-	} 
 }
 
 function busquedaNombre() {
@@ -161,6 +154,7 @@ function localStorageSet(id) {
 			"success"
 		);
 	}
+	renderJuegos(juegosAlfabeticos);
 }
 
 function localStorageRemove(id) {
@@ -170,7 +164,11 @@ function localStorageRemove(id) {
 		arrayId.splice(index, 1);
 		localStorage.setItem("favoritos", JSON.stringify(arrayId));
 		Swal.fire("Juego removido", "El juego ya no esta en favoritos.", "warning");
-		renderJuegos(juntarFavoritos());
+		if (condition) {
+			renderJuegos(juegosAlfabeticos);
+		} else {
+			renderJuegos(juntarFavoritos());
+		}
 	} else {
 		Swal.fire("Error", "El juego no se encontraba en favoritos.", "error");
 	}
