@@ -55,8 +55,8 @@ function renderJuegos(listaJuegos) {
 	let listado = document.querySelector("#listado");
 	for (const juego of listaJuegos) {
 		listado.insertAdjacentHTML(
-			"beforeend",
-			`<li class="card col tarjeta">
+      "beforeend",
+      `<li class="card col tarjeta">
 			<h2 class="titulo text-center">${juego.nombreJuego}</h2>
 			<div class="contenedorImagen container-fluid d-flex align-items-center">
 				<img id="${juego.id}" class="imagen img-fluid" src=${juego.imagenJuego} alt="Tapa del juego" class="card-img-top">
@@ -80,15 +80,14 @@ function renderJuegos(listaJuegos) {
         </div>
       </div>
 			<div>
-				<a href=${juego.linkJuego} target="_blank" class="text-center btn btn-primary">Link a la BGG</a>
-				<button id="${juego.id}" value="${juego.linkVideo}" onclick="showVideo(value)" class="text-center btn btn-info">Video</button>
-
-				<button id="${juego.id}" onclick="localStorageSet(id)" class="text-center btn btn-success">Guardar</button>
-				<button id="${juego.id}" onclick="localStorageRemove(id)" class="text-center btn btn-danger">Quitar de Favoritos</button>
+				<a href=${juego.linkJuego} target="_blank" class="text-center btn btn-primary  mb-2">Link a la BGG</a>
+				<button id="${juego.id}" value="${juego.linkVideo}" onclick="showVideo(value)" class="text-center btn btn-info mb-2">Video</button>
+				<button id="${juego.id}" onclick="localStorageSet(id)" class="text-center btn btn-success mb-2">Guardar</button>
+				<button id="${juego.id}" onclick="localStorageRemove(id)" class="text-center btn btn-danger mb-2">Quitar de Favoritos</button>
 
 			</div>
 		</li>`
-		);
+    )
 		const btn1 = document.querySelectorAll(".btn-success");
 		const btn2 = document.querySelectorAll(".btn-danger");
 		const btnSelector = localStorageGet();
