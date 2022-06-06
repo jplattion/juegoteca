@@ -20,12 +20,19 @@
 			<button id="btnJuegos">Juegos</button>
 			<button id="btnVerFavorito">Ver Favoritos</button>
 		</div>
-		<p class="d-flex justify-content-center">Buscar por nombre</p>
-		<input type="text" id="inputNombre" onkeyup="busquedaNombre()">
-		<p class="d-flex justify-content-center">Buscar por cantidad de jugadores</p>
-		<input type="number" onkeyup="busquedaCantidad()" id="inputCantidadJugadores" min="0" max="100">
-		<p class="d-flex justify-content-center">Buscar por edad</p>
-		<input type="number" id="inputEdad" onkeyup="busquedaEdad()" min="0" max="18">
+
+		<div class="form-floating mb-3 d-flex justify-content-center">
+			<input type="text" id="inputNombre" onkeyup="busquedaNombre()" class="form-control" placeholder="Nombre del juego">
+			<label for="inputNombre" class="text-center">Buscar por nombre</label>
+		</div>
+		<div class="form-floating mb-3 d-flex justify-content-center ">
+			<input type="number" onkeyup="busquedaCantidad()" id="inputCantidadJugadores" min="1" max="100" class="form-control" placeholder="1">
+			<label for="inputCantidadJugadores">Buscar por cantidad de jugadores</label>
+		</div>
+		<div class="form-floating mb-3 d-flex justify-content-center">
+			<input type="number" id="inputEdad" onkeyup="busquedaEdad()" min="1" max="18" class="form-control" placeholder="3">
+			<label for="inputEdad">Buscar por edad</label>
+		</div>
 	</header>
 	<main>
 		<div id="contenedor" class="contenedor container d-flex justify-content-center"></div>

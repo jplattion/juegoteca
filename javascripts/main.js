@@ -187,10 +187,10 @@ function localStorageGet() {
 }
 
 function showVideo(id) {
-	console.log(video);
+	console.log(id);
 	Swal.fire({
 		title: "Video Explicativo",
-		html: `<iframe width="400" height="315" src="${juego.likVideo}" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope" allowfullscreen></iframe>`,
+		html: `<iframe width="400" height="315" src="${juego.linkVideo}" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope" allowfullscreen></iframe>`,
 		showCloseButton: true,
 		focusConfirm: false,
 		confirmButtonText: '<i class="fa fa-thumbs-up"></i> Cerrar',
