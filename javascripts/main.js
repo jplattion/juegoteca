@@ -1,7 +1,7 @@
 const contenedor = document.querySelector("#contenedor");
 const busquedas = document.querySelector("#busquedas");
 let video;
-let select;
+let selectorBusqueda;
 let juegosAlfabeticos = [];
 let juegosFavoritos = [];
 let requestOptions = {
@@ -21,17 +21,17 @@ if (localStorage.getItem("favoritos") == null) {
 }
 
 document.querySelector("#btnIndice").onclick = () => {
-	resetView(), indice();
+	resetView(), (selectorBusqueda = "indice"), indice(), showBusqueda()
 };
 document.querySelector("#btnJuegos").onclick = () => {
 	resetView(),
-		(select = "juegos"),
+		(selectorBusqueda = "juegos"),
 		showBusqueda(),
 		renderJuegos(juegosAlfabeticos);
 };
 document.querySelector("#btnVerFavorito").onclick = () => {
 	resetView(),
-		(select = "favoritos"),
+		(selectorBusqueda = "favoritos"),
 		showBusqueda(),
 		renderJuegos(juntarFavoritos());
 };
@@ -176,12 +176,10 @@ function localStorageRemove(id) {
 		arrayId.splice(index, 1);
 		localStorage.setItem("favoritos", JSON.stringify(arrayId));
 		Swal.fire("Juego removido", "El juego ya no esta en favoritos.", "warning");
-		if (select == "juegos") {
+		if (selectorBusqueda == "juegos") {
 			renderJuegos(juegosAlfabeticos);
-			console.log(select);
 		} else {
 			renderJuegos(juntarFavoritos());
-			console.log(select);
 		}
 	} else {
 		Swal.fire("Error", "El juego no se encontraba en favoritos.", "error");
@@ -194,7 +192,6 @@ function localStorageGet() {
 }
 
 function showVideo(value) {
-	console.log(value);
 	if (value !== "") {
 		Swal.fire({
 			title: "Video Explicativo",
@@ -212,7 +209,7 @@ function showVideo(value) {
 }
 
 function showBusqueda() {
-	if (select == "juegos") {
+	if (selectorBusqueda == "juegos") {
 		busquedas.style.display = "block";
 	} else {
 		busquedas.style.display = "none";
