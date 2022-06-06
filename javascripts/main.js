@@ -1,4 +1,5 @@
 const contenedor = document.querySelector("#contenedor");
+const busquedas = document.querySelector("#busquedas");
 let video;
 let select;
 let juegosAlfabeticos = [];
@@ -23,10 +24,16 @@ document.querySelector("#btnIndice").onclick = () => {
 	resetView(), indice();
 };
 document.querySelector("#btnJuegos").onclick = () => {
-	resetView(), renderJuegos(juegosAlfabeticos), (select = "juegos");
+	resetView(),
+		(select = "juegos"),
+		showBusqueda(),
+		renderJuegos(juegosAlfabeticos);
 };
 document.querySelector("#btnVerFavorito").onclick = () => {
-	resetView(), renderJuegos(juntarFavoritos()), (select = "favoritos");
+	resetView(),
+		(select = "favoritos"),
+		showBusqueda(),
+		renderJuegos(juntarFavoritos());
 };
 
 function resetView() {
@@ -74,14 +81,14 @@ function renderJuegos(listaJuegos) {
       </div>
 			<div>
 				<a href=${juego.linkJuego} target="_blank" class="text-center btn btn-primary">Link a la BGG</a>
-				<button id="${juego.id}" onclick="showVideo(id)" class="text-center btn btn-info">Video</button>
+				<button id="${juego.id}" value="${juego.linkVideo}" onclick="showVideo(value)" class="text-center btn btn-info">Video</button>
+
 				<button id="${juego.id}" onclick="localStorageSet(id)" class="text-center btn btn-success">Guardar</button>
 				<button id="${juego.id}" onclick="localStorageRemove(id)" class="text-center btn btn-danger">Quitar de Favoritos</button>
 
 			</div>
 		</li>`
 		);
-		video = juego.linkVideo;
 		const btn1 = document.querySelectorAll(".btn-success");
 		const btn2 = document.querySelectorAll(".btn-danger");
 		const btnSelector = localStorageGet();
@@ -186,13 +193,28 @@ function localStorageGet() {
 	return juegosFavoritos;
 }
 
-function showVideo(id) {
-	console.log(id);
-	Swal.fire({
-		title: "Video Explicativo",
-		html: `<iframe width="400" height="315" src="${juego.linkVideo}" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope" allowfullscreen></iframe>`,
-		showCloseButton: true,
-		focusConfirm: false,
-		confirmButtonText: '<i class="fa fa-thumbs-up"></i> Cerrar',
-	});
+function showVideo(value) {
+	console.log(value);
+	if (value !== "") {
+		Swal.fire({
+			title: "Video Explicativo",
+			html: `
+			<div class="embed-responsive embed-responsive-16by9">
+				<iframe class="embed-responsive-item" src="${value}" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope" allowfullscreen></iframe>
+			</div>`,
+			showCloseButton: true,
+			focusConfirm: false,
+			confirmButtonText: '<i class="fa fa-thumbs-up"></i> Cerrar',
+		});
+	} else {
+		Swal.fire("Error", "No hay video para este juego.", "error");
+	}
+}
+
+function showBusqueda() {
+	if (select == "juegos") {
+		busquedas.style.display = "block";
+	} else {
+		busquedas.style.display = "none";
+	}
 }

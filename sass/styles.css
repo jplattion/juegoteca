@@ -80,11 +80,15 @@ h2 {
 }
 
 input {
-  min-width: 600px;
+  min-width: 300px;
   max-width: 50vw;
 }
 
 .form-floating > label {
   top: auto;
   left: auto;
+}
+
+#busquedas {
+  display: none;
 }/*# sourceMappingURL=styles.css.map */
