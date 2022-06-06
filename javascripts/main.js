@@ -82,8 +82,8 @@ function renderJuegos(listaJuegos) {
 			<div>
 				<a href=${juego.linkJuego} target="_blank" class="text-center btn btn-primary  mb-2">Link a la BGG</a>
 				<button id="${juego.id}" value="${juego.linkVideo}" onclick="showVideo(value)" class="text-center btn btn-info mb-2">Video</button>
-				<button id="${juego.id}" onclick="localStorageSet(id)" class="text-center btn btn-success mb-2">Guardar</button>
-				<button id="${juego.id}" onclick="localStorageRemove(id)" class="text-center btn btn-danger mb-2">Quitar de Favoritos</button>
+				<button id="${juego.id}" onclick="localStorageSet(id)" class="text-center btn btn-success mb-2">Guardar en favoritos</button>
+				<button id="${juego.id}" onclick="localStorageRemove(id)" class="text-center btn btn-danger mb-2">Quitar de favoritos</button>
 
 			</div>
 		</li>`
