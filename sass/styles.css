@@ -23,6 +23,7 @@ html body {
 
 #logo {
   width: 300px;
+  cursor: pointer;
 }
 
 #busquedas {
@@ -36,6 +37,12 @@ html body {
 #busquedas .form-floating > label {
   top: auto;
   left: auto;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
 }
 
 #btnUp {
@@ -99,4 +106,13 @@ html body {
 #contenedor .tarjetaIndice .indice {
   font-size: 1rem;
   margin: 2px;
+}
+#contenedor #calendario {
+  margin-bottom: 10rem;
+  max-width: 1200px;
+  width: 80vw;
+  max-height: 800px;
+  height: 60vh;
+  border: 2px solid black;
+  border-radius: 2px;
 }/*# sourceMappingURL=styles.css.map */

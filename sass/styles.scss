@@ -17,6 +17,7 @@
 
 #logo {
 	width: 300px;
+	cursor: pointer;
 }
 
 #busquedas {
@@ -31,6 +32,12 @@
 		left: auto;
 	}
 }
+footer{
+	display: flex;
+	justify-content: center;
+	padding: 1rem;
+}
+
 
 #btnUp {
 	position: fixed;
@@ -98,5 +105,14 @@
 			font-size: 1rem;
 			margin: 2px;
 		}
+	}
+	#calendario{
+		margin-bottom: 10rem;
+		max-width: 1200px;
+		width: 80vw;
+		max-height: 800px;
+		height: 60vh;
+		border: 2px solid black;
+		border-radius: 2px;
 	}
 }
