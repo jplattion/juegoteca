@@ -1,6 +1,10 @@
 const contenedor = document.querySelector("#contenedor");
 const busquedas = document.querySelector("#busquedas");
 const btnUP = document.querySelector("#btnUp");
+const btnIndice = document.querySelector("#btnIndice");
+const btnJuegos = document.querySelector("#btnJuegos");
+const btnFavoritos = document.querySelector("#btnFavoritos");
+
 let video;
 let selectorBusqueda;
 let juegosAlfabeticos = [];
@@ -21,53 +25,27 @@ if (localStorage.getItem("favoritos") == null) {
 	localStorage.setItem("favoritos", "[]");
 }
 
-document.querySelector("#btnIndice").onclick = () => {
+btnIndice.addEventListener("click", selectIndice);
+btnJuegos.addEventListener("click", selectJuegos);
+btnFavoritos.addEventListener("click", selectFavoritos);
+btnUP.addEventListener("click", irArriba);
+
+function selectIndice() {
 	resetView(), (selectorBusqueda = "indice"), indice(), showBusqueda();
-};
-document.querySelector("#btnJuegos").onclick = () => {
+}
+
+function selectJuegos() {
 	resetView(),
 		(selectorBusqueda = "juegos"),
 		showBusqueda(),
 		renderJuegos(juegosAlfabeticos);
-};
-document.querySelector("#btnVerFavorito").onclick = () => {
+}
+
+function selectFavoritos() {
 	resetView(),
 		(selectorBusqueda = "favoritos"),
 		showBusqueda(),
 		renderJuegos(juntarFavoritos());
-};
-
-window.onscroll = function () {
-	scrollUp();
-};
-
-function scrollUp() {
-	if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-		btnUP.style.display = "block";
-	} else {
-		btnUP.style.display = "none";
-	}
-}
-
-btnUP.addEventListener("click", irArriba);
-
-function irArriba() {
-	document.body.scrollTop = 0;
-	document.documentElement.scrollTop = 0;
-}
-
-function resetView() {
-	while (contenedor.hasChildNodes()) {
-		contenedor.removeChild(contenedor.firstChild);
-	}
-}
-
-function indice() {
-	contenedor.innerHTML = `<ul id="listado" class="container tarjetaIndice"></ul>`;
-	let card = document.querySelector(".tarjetaIndice");
-	for (let i = 0; i < juegosAlfabeticos.length; i += 1) {
-		card.innerHTML += `<li><h3 class="indice text-center ">${juegosAlfabeticos[i].nombreJuego}</h3></li>`;
-	}
 }
 
 function renderJuegos(listaJuegos) {
@@ -107,19 +85,50 @@ function renderJuegos(listaJuegos) {
 			</div>
 		</li>`
 		);
-		const btn1 = document.querySelectorAll(".btn-success");
-		const btn2 = document.querySelectorAll(".btn-danger");
+		const btnGuardar = document.querySelectorAll(".btn-success");
+		const btnEliminar = document.querySelectorAll(".btn-danger");
 		const btnSelector = localStorageGet();
-		btn1.forEach((btn) => {
+		btnGuardar.forEach((btn) => {
 			if (btnSelector.find((favorito) => favorito == btn.id)) {
 				btn.style.display = "none";
 			}
 		});
-		btn2.forEach((btn) => {
+		btnEliminar.forEach((btn) => {
 			if (btnSelector.find((favorito) => favorito == btn.id)) {
 				btn.style.display = "block";
 			}
 		});
+	}
+}
+
+window.onscroll = function () {
+	scrollUp();
+};
+
+function scrollUp() {
+	if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+		btnUP.style.display = "block";
+	} else {
+		btnUP.style.display = "none";
+	}
+}
+
+function irArriba() {
+	document.body.scrollTop = 0;
+	document.documentElement.scrollTop = 0;
+}
+
+function resetView() {
+	while (contenedor.hasChildNodes()) {
+		contenedor.removeChild(contenedor.firstChild);
+	}
+}
+
+function indice() {
+	contenedor.innerHTML = `<ul id="listado" class="container tarjetaIndice"></ul>`;
+	let card = document.querySelector(".tarjetaIndice");
+	for (let i = 0; i < juegosAlfabeticos.length; i += 1) {
+		card.innerHTML += `<li><h3 class="indice text-center ">${juegosAlfabeticos[i].nombreJuego}</h3></li>`;
 	}
 }
 
