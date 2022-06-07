@@ -11,6 +11,7 @@ html body {
 .saludo {
   font-family: "Rock Salt", cursive;
   text-shadow: 0 0 15px white, 0 0 10px white, 0 0 5px white;
+  letter-spacing: 3px;
 }
 
 .btn-lg {
