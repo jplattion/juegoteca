@@ -57,7 +57,7 @@ function renderJuegos(listaJuegos) {
 		listado.insertAdjacentHTML(
 			"beforeend",
 			`<li class="card col tarjeta">
-			<h2 class="titulo text-center">${juego.nombreJuego}</h2>
+			<h3 class="titulo text-center">${juego.nombreJuego}</h3>
 			<div class="contenedorImagen container-fluid d-flex align-items-center">
 				<img id="${juego.id}" class="imagen img-fluid" src=${juego.imagenJuego} alt="Tapa del juego" class="card-img-top">
 			</div>
@@ -84,7 +84,6 @@ function renderJuegos(listaJuegos) {
 				<button id="${juego.id}" value="${juego.linkVideo}" onclick="showVideo(value)" class="text-center btn btn-info mb-2">Video explicativo</button>
 				<button id="${juego.id}" onclick="localStorageSet(id)" class="text-center btn btn-success mb-2">Guardar en favoritos</button>
 				<button id="${juego.id}" onclick="localStorageRemove(id)" class="text-center btn btn-danger mb-2">Quitar de favoritos</button>
-
 			</div>
 		</li>`
 		);

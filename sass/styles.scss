@@ -2,7 +2,8 @@
 @import "variables";
 @import "estructura";
 
-h1 {
+h1,
+h2 {
 	font-family: "Rock Salt", cursive;
 	text-shadow: 0 0 15px white, 0 0 10px white, 0 0 5px white;
 }
@@ -32,6 +33,10 @@ h1 {
 }
 
 #contenedor {
+	#landingImage {
+		width: 80vw;
+		border-radius: 50px;
+	}
 	.card {
 		list-style-type: none;
 		background-color: $bkgCard;
