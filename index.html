@@ -25,20 +25,29 @@
 	</header>
 	<main>
 		<div id="busquedas">
-			<div class="form-floating mb-3 d-flex justify-content-center">
-				<input type="text" id="inputNombre" onkeyup="busquedaNombre()" class="form-control text-center"
-					placeholder="Nombre del juego">
-				<label for="inputNombre" class="text-center">Buscar por nombre</label>
+			<h3 class="text-center">Buscar por...</h3>
+			<div class="btn-group-justified text-center mb-3" role="group" aria-label="Basic radio toggle button group">
+				<input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off">
+				<label class="btn btn-secondary" for="btnradio1">Nombre</label>
+
+				<input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+				<label class="btn btn-secondary" for="btnradio2">Cantidad de jugadores</label>
+
+				<input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+				<label class="btn btn-secondary" for="btnradio3">Edad</label>
 			</div>
-			<div class="form-floating mb-3 d-flex justify-content-center ">
-				<input type="number" onkeyup="busquedaCantidad()" id="inputCantidadJugadores" min="1" max="100"
-					class="form-control text-center" placeholder="1">
-				<label for="inputCantidadJugadores">Buscar por cantidad de jugadores</label>
+
+			<div class="form-floating mb-3 justify-content-center" id="contenedorNombre">
+				<input type="text" id="inputNombre" onkeyup="busquedaNombre()" class="form-control text-center" placeholder="Nombre del juego">
+				<label for="inputNombre" class="text-center">Ingrese el nombre</label>
 			</div>
-			<div class="form-floating mb-3 d-flex justify-content-center">
-				<input type="number" id="inputEdad" onkeyup="busquedaEdad()" min="1" max="18" class="form-control text-center"
-					placeholder="3">
-				<label for="inputEdad">Buscar por edad</label>
+			<div class="form-floating mb-3 justify-content-center" id="contenedorCantidad">
+				<input type="number" onkeyup="busquedaCantidad()" id="inputCantidadJugadores" min="1" max="100" class="form-control text-center" placeholder="1">
+				<label for="inputCantidadJugadores">Ingrese la cantidad de jugadores</label>
+			</div>
+			<div class="form-floating mb-3 justify-content-center" id="contenedorEdad">
+				<input type="number" id="inputEdad" onkeyup="busquedaEdad()" min="1" max="18" class="form-control text-center" placeholder="3">
+				<label for="inputEdad">Ingrese la edad</label>
 			</div>
 		</div>
 		<div id="contenedor" class="contenedor container d-flex justify-content-center">

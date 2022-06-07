@@ -6,6 +6,13 @@ const btnJuegos = document.querySelector("#btnJuegos");
 const btnFavoritos = document.querySelector("#btnFavoritos");
 const btnCalendario = document.querySelector("#btnCalendario");
 const logo = document.querySelector('#logo')
+const btnradio1 = document.querySelector("#btnradio1")
+const btnradio2 = document.querySelector("#btnradio2")
+const btnradio3 = document.querySelector("#btnradio3")
+const contenedorNombre = document.querySelector("#contenedorNombre")
+const contenedorCantidad = document.querySelector("#contenedorCantidad")
+const contenedorEdad = document.querySelector("#contenedorEdad")
+const radioBtn = document.querySelectorAll('input[name="btnradio"]')
 
 let selectorBusqueda;
 let juegosAlfabeticos = [];
@@ -32,6 +39,47 @@ btnFavoritos.addEventListener("click", selectFavoritos);
 btnCalendario.addEventListener("click", selectCalendario);
 btnUP.addEventListener("click", irArriba);
 logo.addEventListener("click", reload);
+
+radioBtn.forEach((radioButton) => {
+	radioButton.addEventListener("change", function(){
+		if (this.checked){
+			mostrarBusqueda(this.id);
+		}
+	});
+});
+
+function showBusqueda() {
+  if (selectorBusqueda == "juegos") {
+    busquedas.style.display = "block"
+  } else {
+    busquedas.style.display = "none"
+  }
+}
+
+function mostrarBusqueda(buscador){
+	switch (buscador) {
+    case "btnradio1":
+      contenedorNombre.style.display = "flex"
+      contenedorCantidad.style.display = "none"
+      contenedorEdad.style.display = "none"
+      break
+    case "btnradio2":
+      contenedorNombre.style.display = "none"
+      contenedorCantidad.style.display = "flex"
+      contenedorEdad.style.display = "none"
+      break
+    case "btnradio3":
+      contenedorNombre.style.display = "none"
+      contenedorCantidad.style.display = "none"
+      contenedorEdad.style.display = "flex"
+      break
+    default:
+      contenedorNombre.style.display = "flex"
+      contenedorCantidad.style.display = "none"
+      contenedorEdad.style.display = "none"
+      break
+  }
+}
 
 function selectIndice() {
 	resetView(), (selectorBusqueda = "indice"), indice(), showBusqueda();
@@ -245,14 +293,6 @@ function showVideo(value) {
 		});
 	} else {
 		Swal.fire("Error", "No hay video para este juego.", "error");
-	}
-}
-
-function showBusqueda() {
-	if (selectorBusqueda == "juegos") {
-		busquedas.style.display = "block";
-	} else {
-		busquedas.style.display = "none";
 	}
 }
 

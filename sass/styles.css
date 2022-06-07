@@ -32,7 +32,10 @@ main #busquedas input {
   max-width: 50vw;
   border: 2px solid #000000;
 }
-main #busquedas .form-floating > label {
+main #busquedas .form-floating {
+  display: none;
+}
+main #busquedas .form-floating label {
   top: auto;
   left: auto;
 }
