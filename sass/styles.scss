@@ -2,117 +2,113 @@
 @import "variables";
 @import "estructura";
 
-.saludo {
-	font-family: "Rock Salt", cursive;
-	text-shadow: 0 0 15px white, 0 0 10px white, 0 0 5px white;
-	letter-spacing: 3px;
-}
-
-.btn-lg {
-	text-transform: uppercase;
-	font-weight: 600;
-	background-color: $bkgBtn;
-	border: 1px solid $borderCard;
-}
-
-#logo {
-	width: 300px;
-	cursor: pointer;
-}
-
-#busquedas {
-	display: none;
-	input {
-		min-width: 300px;
-		max-width: 50vw;
-		border: 2px solid $borderCard;
+header{
+	.saludo {
+		font-family: "Rock Salt", cursive;
+		text-shadow: 0 0 15px white, 0 0 10px white, 0 0 5px white;
+		letter-spacing: 3px;
 	}
-	.form-floating > label {
-		top: auto;
-		left: auto;
+	.btn-lg {
+		text-transform: uppercase;
+		font-weight: 600;
+		background-color: $bkgBtn;
+		border: 1px solid $borderCard;
+	}
+	#logo {
+		width: 300px;
+		cursor: pointer;
 	}
 }
+
+main{
+	#busquedas {
+		display: none;
+		input {
+			min-width: 300px;
+			max-width: 50vw;
+			border: 2px solid $borderCard;
+		}
+		.form-floating > label {
+			top: auto;
+			left: auto;
+		}
+	}
+	#btnUp {
+		position: fixed;
+		bottom: 50px;
+		right: 50px;
+		display: none;
+	}
+	#contenedor {
+		#landingImage {
+			max-width: 80vw;
+			max-height: 500px;
+			border-radius: 50px;
+		}
+		.card {
+			list-style-type: none;
+			background-color: $bkgCard;
+			margin: 0.5rem;
+			padding: 0.5rem;
+			border: 2px solid $borderCard;
+			border-radius: 20px;
+			min-width: 150px;
+			max-width: 175px;
+			.titulo {
+				display: flex;
+				background-color: $bkgTitulo;
+				text-transform: uppercase;
+				font-size: 1rem;
+				font-weight: 700;
+				padding: 10px;
+				height: 80px;
+				border-radius: 20px;
+				align-items: center;
+				justify-content: center;
+			}
+			.contenedorImagen {
+				height: 250px;
+			}
+			.info {
+				font-size: 0.7rem;
+				font-family: "Unica One", cursive;
+			}
+			.btn {
+				width: 100%;
+				font-size: 0.8rem;
+			}
+			.btn-danger {
+				display: none;
+			}
+		}
+		.tarjetaIndice {
+			list-style-type: none;
+			background-color: $bkgCard;
+			margin: 0.5rem;
+			padding: 0.5rem;
+			border: 3px solid $borderCard;
+			border-radius: 20px;
+			width: 80%;
+			max-width: 600px;
+			.indice {
+				font-size: 1rem;
+				margin: 2px;
+			}
+		}
+		#calendario{
+			margin-bottom: 10rem;
+			max-width: 1200px;
+			width: 80vw;
+			max-height: 800px;
+			height: 60vh;
+			border: 2px solid black;
+			border-radius: 2px;
+		}
+	}
+}
+
 footer{
 	display: flex;
 	justify-content: center;
 	padding: 1rem;
-}
-
-
-#btnUp {
-	position: fixed;
-	bottom: 50px;
-	right: 50px;
-	display: none;
-}
-
-#contenedor {
-	#landingImage {
-		max-width: 80vw;
-		max-height: 500px;
-		border-radius: 50px;
-	}
-	.card {
-		list-style-type: none;
-		background-color: $bkgCard;
-		margin: 0.5rem;
-		padding: 0.5rem;
-		border: 2px solid $borderCard;
-		border-radius: 20px;
-		min-width: 150px;
-		max-width: 175px;
-
-		.titulo {
-			display: flex;
-			background-color: $bkgTitulo;
-			text-transform: uppercase;
-			font-size: 1rem;
-			font-weight: 700;
-			padding: 10px;
-			height: 80px;
-			border-radius: 20px;
-			align-items: center;
-			justify-content: center;
-		}
-
-		.contenedorImagen {
-			height: 250px;
-		}
-		.info {
-			font-size: 0.7rem;
-			font-family: "Unica One", cursive;
-		}
-
-		.btn {
-			width: 100%;
-			font-size: 0.8rem;
-		}
-
-		.btn-danger {
-			display: none;
-		}
-	}
-	.tarjetaIndice {
-		list-style-type: none;
-		background-color: $bkgCard;
-		margin: 0.5rem;
-		padding: 0.5rem;
-		border: 3px solid $borderCard;
-		border-radius: 20px;
-		width: 80%;
-		max-width: 600px;
-		.indice {
-			font-size: 1rem;
-			margin: 2px;
-		}
-	}
-	#calendario{
-		margin-bottom: 10rem;
-		max-width: 1200px;
-		width: 80vw;
-		max-height: 800px;
-		height: 60vh;
-		border: 2px solid black;
-		border-radius: 2px;
-	}
 }

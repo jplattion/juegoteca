@@ -59,7 +59,6 @@ function selectCalendario(){
       (contenedor.innerHTML = `<iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23ffffff&ctz=America%2FArgentina%2FBuenos_Aires&showNav=1&showCalendars=0&src=cnZlZ2U4ZmE5bHRzOWd2NGI1OGg4cjU3bWdAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&src=ZXMuYXIjaG9saWRheUBncm91cC52LmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23C0CA33&color=%237986CB" frameborder="0" scrolling="no" id="calendario"></iframe>`)
 }
 
-
 function renderJuegos(listaJuegos) {
 	contenedor.innerHTML = `<ul id="listado" class="row container-fluid justify-content-center gx-0 p-0"></ul>`;
 	let listado = document.querySelector("#listado");
