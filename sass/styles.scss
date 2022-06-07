@@ -1,19 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Rock+Salt&family=Unica+One&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Rock+Salt&family=Unica+One&display=swap");
 @import "variables";
 @import "estructura";
 
-h1{
-	font-family: 'Rock Salt', cursive;
+h1 {
+	font-family: "Rock Salt", cursive;
+	text-shadow: 0 0 15px white, 0 0 10px white, 0 0 5px white;
 }
 
-.btn-lg{
+.btn-lg {
 	text-transform: uppercase;
 	font-weight: 600;
 	background-color: $bkgBtn;
 	border: 1px solid $borderCard;
 }
 
-#logo{
+#logo {
 	width: 300px;
 }
 
@@ -40,7 +41,7 @@ h1{
 		border-radius: 20px;
 		min-width: 150px;
 		max-width: 175px;
-		
+
 		.titulo {
 			display: flex;
 			background-color: $bkgTitulo;
@@ -52,20 +53,20 @@ h1{
 			align-items: center;
 			justify-content: center;
 		}
-		
+
 		.contenedorImagen {
 			height: 250px;
 		}
 		.info {
 			font-size: 0.7rem;
-			font-family: 'Unica One', cursive;
+			font-family: "Unica One", cursive;
 		}
-	
+
 		.btn {
 			width: 100%;
 			font-size: 0.8rem;
 		}
-	
+
 		.btn-danger {
 			display: none;
 		}
@@ -79,7 +80,7 @@ h1{
 		border-radius: 20px;
 		width: 80%;
 		max-width: 600px;
-			.indice {
+		.indice {
 			font-size: 1rem;
 			margin: 2px;
 		}

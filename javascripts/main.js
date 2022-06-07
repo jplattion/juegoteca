@@ -21,7 +21,7 @@ if (localStorage.getItem("favoritos") == null) {
 }
 
 document.querySelector("#btnIndice").onclick = () => {
-	resetView(), (selectorBusqueda = "indice"), indice(), showBusqueda()
+	resetView(), (selectorBusqueda = "indice"), indice(), showBusqueda();
 };
 document.querySelector("#btnJuegos").onclick = () => {
 	resetView(),
@@ -55,8 +55,8 @@ function renderJuegos(listaJuegos) {
 	let listado = document.querySelector("#listado");
 	for (const juego of listaJuegos) {
 		listado.insertAdjacentHTML(
-      "beforeend",
-      `<li class="card col tarjeta">
+			"beforeend",
+			`<li class="card col tarjeta">
 			<h2 class="titulo text-center">${juego.nombreJuego}</h2>
 			<div class="contenedorImagen container-fluid d-flex align-items-center">
 				<img id="${juego.id}" class="imagen img-fluid" src=${juego.imagenJuego} alt="Tapa del juego" class="card-img-top">
@@ -81,13 +81,13 @@ function renderJuegos(listaJuegos) {
       </div>
 			<div>
 				<a href=${juego.linkJuego} target="_blank" class="text-center btn btn-primary  mb-2">Link a la BGG</a>
-				<button id="${juego.id}" value="${juego.linkVideo}" onclick="showVideo(value)" class="text-center btn btn-info mb-2">Video</button>
+				<button id="${juego.id}" value="${juego.linkVideo}" onclick="showVideo(value)" class="text-center btn btn-info mb-2">Video explicativo</button>
 				<button id="${juego.id}" onclick="localStorageSet(id)" class="text-center btn btn-success mb-2">Guardar en favoritos</button>
 				<button id="${juego.id}" onclick="localStorageRemove(id)" class="text-center btn btn-danger mb-2">Quitar de favoritos</button>
 
 			</div>
 		</li>`
-    )
+		);
 		const btn1 = document.querySelectorAll(".btn-success");
 		const btn2 = document.querySelectorAll(".btn-danger");
 		const btnSelector = localStorageGet();
@@ -148,6 +148,9 @@ function juntarFavoritos() {
 		todosFavoritos.push(
 			juegosAlfabeticos.find((favorito) => favorito.id == id)
 		);
+	}
+	if (todosFavoritos == "") {
+		Swal.fire("Ups!!!", "No tenes ningun juego en favoritos.", "error");
 	}
 	return todosFavoritos;
 }
@@ -213,4 +216,8 @@ function showBusqueda() {
 	} else {
 		busquedas.style.display = "none";
 	}
+}
+
+function reload() {
+	window.location.reload();
 }
