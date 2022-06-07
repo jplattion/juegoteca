@@ -38,7 +38,8 @@ html body {
 }
 
 #contenedor #landingImage {
-  width: 80vw;
+  max-width: 80vw;
+  max-height: 500px;
   border-radius: 50px;
 }
 #contenedor .card {
