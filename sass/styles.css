@@ -63,8 +63,9 @@ html body {
 #contenedor .card .titulo {
   display: flex;
   background-color: #7fffd4;
+  text-transform: uppercase;
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 700;
   padding: 10px;
   height: 80px;
   border-radius: 20px;
