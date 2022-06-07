@@ -1,5 +1,6 @@
 const contenedor = document.querySelector("#contenedor");
 const busquedas = document.querySelector("#busquedas");
+const btnUP = document.querySelector("#btnUp");
 let video;
 let selectorBusqueda;
 let juegosAlfabeticos = [];
@@ -35,6 +36,25 @@ document.querySelector("#btnVerFavorito").onclick = () => {
 		showBusqueda(),
 		renderJuegos(juntarFavoritos());
 };
+
+window.onscroll = function () {
+	scrollUp();
+};
+
+function scrollUp() {
+	if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+		btnUP.style.display = "block";
+	} else {
+		btnUP.style.display = "none";
+	}
+}
+
+btnUP.addEventListener("click", irArriba);
+
+function irArriba() {
+	document.body.scrollTop = 0;
+	document.documentElement.scrollTop = 0;
+}
 
 function resetView() {
 	while (contenedor.hasChildNodes()) {

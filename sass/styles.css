@@ -37,6 +37,13 @@ html body {
   left: auto;
 }
 
+#btnUp {
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  display: none;
+}
+
 #contenedor #landingImage {
   max-width: 80vw;
   max-height: 500px;
