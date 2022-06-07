@@ -111,11 +111,11 @@ function renderJuegos(listaJuegos) {
 	let listado = document.querySelector("#listado");
 	for (const juego of listaJuegos) {
 		listado.insertAdjacentHTML(
-			"beforeend",
-			`<li class="card col tarjeta">
+      "beforeend",
+      `<li class="card col tarjeta">
 			<h3 class="titulo text-center">${juego.nombreJuego}</h3>
 			<div class="contenedorImagen container-fluid d-flex align-items-center">
-				<img id="${juego.id}" class="imagen img-fluid" src=${juego.imagenJuego} alt="Tapa del juego" class="card-img-top">
+				<img id="${juego.id}" class="imagen img-fluid" src=${juego.imagenJuego} alt="Tapa del juego" class="card-img-top" onclick="modalImg(src)">
 			</div>
       <div class="container">
         <div class="row justify-content-center align-items-center gx-0">
@@ -142,9 +142,10 @@ function renderJuegos(listaJuegos) {
 				<button id="${juego.id}" onclick="localStorageRemove(id)" class="text-center btn btn-danger mb-2">Quitar de favoritos</button>
 			</div>
 		</li>`
-		);
+    )
 		const btnGuardar = document.querySelectorAll(".btn-success");
 		const btnEliminar = document.querySelectorAll(".btn-danger");
+				
 		const btnSelector = localStorageGet();
 		btnGuardar.forEach((btn) => {
 			if (btnSelector.find((favorito) => favorito == btn.id)) {
@@ -294,6 +295,14 @@ function showVideo(value) {
 	} else {
 		Swal.fire("Error", "No hay video para este juego.", "error");
 	}
+}
+
+function modalImg(src) {
+	Swal.fire({
+    imageUrl: src,
+    imageAlt: "Tapa del Juego",
+  })
+	
 }
 
 function reload() {
