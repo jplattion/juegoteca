@@ -4,8 +4,8 @@ html {
   margin: 0;
 }
 html body {
-  background-color: #eeeeee;
   background-image: url(../images/backgroundMain.svg);
+  background-attachment: fixed;
   font-family: "Fredoka", Arial, Helvetica, sans-serif;
 }
 
