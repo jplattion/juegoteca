@@ -12,16 +12,16 @@
 </head>
 
 <body>
-	<header class="d-flex flex-column justify-content-center">
-		<nav class="navbar navbar-expand-lg py-3 navbar-dark shadow-sm">
+	<header class="d-flex flex-column justify-content-center sticky-top">
+		<nav class="navbar navbar-expand-lg py-3 navbar-light shadow-sm">
 			<div class="container">
 				<a href="#" class="navbar-brand">
 					<img id="logo" src="./images/logo.png" height="50" alt="Logo" class="d-inline-block align-middle mr-2">
 					<span id="logoNombre" class="text-uppercase font-weight-bold align-middle">Dados y Meeples</span>
 				</a>
-		
-				<button type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>
-		
+				<button type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler">
+					<span class="navbar-toggler-icon"></span>
+				</button>
 				<div id="navbarSupportedContent" class="collapse navbar-collapse">
 					<ul class="navbar-nav ml-auto">
 						<li class="nav-item active"><button id="btnHome" class="btn-lg">Inicio</button></li>
@@ -36,33 +36,37 @@
 	</header>
 	<main>
 		<div id="busquedas">
-			<h3 class="text-center mt-3">BUSCAR POR...</h3>
-			<div class="btn-group-justified text-center mb-3" role="group" aria-label="Basic radio toggle button group">
+			<h3 class="text-center mt-3">BUSCAR JUEGO POR...</h3>
+			<div class="btn-group-justified text-center m-3 " role="group" aria-label="Basic radio toggle button group">
 				<input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off">
 				<label class="btn btn-secondary" for="btnradio1">Nombre</label>
 
 				<input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-				<label class="btn btn-secondary" for="btnradio2">Cantidad de jugadores</label>
+				<label class="btn btn-secondary" for="btnradio2"># de jugadores</label>
 
 				<input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
 				<label class="btn btn-secondary" for="btnradio3">Edad</label>
 			</div>
 
 			<div class="form-floating mb-3 justify-content-center" id="contenedorNombre">
-				<input type="text" id="inputNombre" onkeyup="busquedaNombre()" class="form-control text-center" placeholder="Nombre del juego">
+				<input type="text" id="inputNombre" onkeyup="busquedaNombre()" class="form-control text-center"
+					placeholder="Nombre del juego">
 				<label for="inputNombre" class="text-center">Ingrese el nombre</label>
 			</div>
 			<div class="form-floating mb-3 justify-content-center" id="contenedorCantidad">
-				<input type="number" onchange="busquedaCantidad()" id="inputCantidadJugadores" min="1" max="100" class="form-control text-center" placeholder="1">
+				<input type="number" onchange="busquedaCantidad()" id="inputCantidadJugadores" min="1" max="100"
+					class="form-control text-center" placeholder="1">
 				<label for="inputCantidadJugadores">Ingrese la cantidad de jugadores</label>
 			</div>
 			<div class="form-floating mb-3 justify-content-center" id="contenedorEdad">
-				<input type="number" id="inputEdad" onchange="busquedaEdad()" min="1" max="18" class="form-control text-center" placeholder="3">
+				<input type="number" id="inputEdad" onchange="busquedaEdad()" min="1" max="18" class="form-control text-center"
+					placeholder="3">
 				<label for="inputEdad">Ingrese la edad</label>
 			</div>
 		</div>
 		<div id="contenedor" class="contenedor container d-flex justify-content-center">
-			<img id="landingImage" src="./images/landingImage.png" alt="No dejamos de jugar porque envejecemos, envejecemos porque dejamos de jugar." class="mx-auto d-block mt-5">
+			<img id="landingImage" src="./images/landingImage.png"
+				alt="No dejamos de jugar porque envejecemos, envejecemos porque dejamos de jugar." class="mx-auto d-block mt-5">
 		</div>
 		<button type="button" class="btn btn-floating" id="btnUp">
 			<img src="./images/btnUp.png" alt="Boton Arriba">

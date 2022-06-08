@@ -9,30 +9,36 @@ html body {
   font-family: "Fredoka", Arial, Helvetica, sans-serif;
 }
 
+header .navbar-light .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+}
+header .navbar-light .navbar-toggler {
+  border: 2px solid black;
+}
 header nav {
-  background-color: grey;
+  background-image: url(../images/banner.png);
+  background-position: center;
+  background-size: cover;
 }
-header .saludo {
-  font-family: "Rock Salt", cursive;
-  text-shadow: 0 0 15px white, 0 0 10px white, 0 0 5px white;
-  letter-spacing: 3px;
-}
-header .btn-lg {
-  text-transform: uppercase;
-  font-weight: 600;
-  background-color: #a0ffa0;
-  border: 1px solid #000000;
-  border-radius: 10px;
-  margin: 5px;
-  max-width: 200px;
-}
-header #logo {
+header nav #logo {
   cursor: pointer;
-  height: 70px;
+  max-height: 70px;
 }
-header #logoNombre {
+header nav #logoNombre {
+  color: black;
+  text-shadow: 0 0 15px white, 0 0 10px white, 0 0 5px white;
   font-family: "Amatic SC", cursive;
   font-size: 3rem;
+}
+header nav .btn-lg {
+  text-transform: uppercase;
+  font-weight: 600;
+  background-color: #15b5ff;
+  border: 2px solid #000000;
+  border-radius: 10px;
+  margin: 2px;
+  max-width: 180px;
 }
 
 main {
@@ -42,7 +48,6 @@ main #busquedas {
   display: none;
 }
 main #busquedas input {
-  min-width: 300px;
   max-width: 50vw;
   border: 2px solid #000000;
 }
@@ -77,21 +82,24 @@ main #contenedor #landingImage {
 }
 main #contenedor .card {
   list-style-type: none;
-  background-color: #808080;
+  background-image: url(../images/bkgCard.png);
+  background-attachment: local;
+  background-size: cover;
   margin: 0.5rem;
-  padding: 0.5rem;
   border: 2px solid #000000;
   border-radius: 20px;
-  min-width: 150px;
-  max-width: 175px;
+  min-width: 170px;
+  max-width: 200px;
+  height: 650px;
 }
 main #contenedor .card .titulo {
   font-family: "Fredoka", sans-serif;
   display: flex;
-  background-color: #7fffd4;
+  color: black;
+  text-shadow: 0 0 5px white, 0 0 10px white, 0 0 15px white, 0 0 20px white, 0 0 25px white, -2px 0 10px white, -2px 0 15px white, -2px 0 20px white, -2px 0 25px white, 2px 0 10px white, 2px 0 15px white, 2px 0 20px white, 2px 0 25px white;
   text-transform: uppercase;
   font-size: 1.1rem;
-  font-weight: 400;
+  font-weight: 600;
   padding: 10px;
   height: 80px;
   border-radius: 20px;
@@ -99,25 +107,29 @@ main #contenedor .card .titulo {
   justify-content: center;
 }
 main #contenedor .card .contenedorImagen {
-  height: 250px;
+  max-width: 175px;
 }
-main #contenedor .card .info {
+main #contenedor .card #informacion {
+  position: absolute;
+  bottom: 0px;
+}
+main #contenedor .card #informacion .info {
   font-size: 0.8rem;
+  text-shadow: 0 0 5px white, 0 0 10px white, 0 0 15px white, 0 0 20px white, 0 0 25px white, -2px 0 10px white, -2px 0 15px white, -2px 0 20px white, -2px 0 25px white, 2px 0 10px white, 2px 0 15px white, 2px 0 20px white, 2px 0 25px white;
   font-weight: 600;
-  font-family: "Unica One", cursive;
 }
-main #contenedor .card .btn {
+main #contenedor .card #informacion .btn {
   width: 100%;
   font-size: 0.8rem;
   text-transform: uppercase;
   color: black;
 }
-main #contenedor .card .btn-danger {
+main #contenedor .card #informacion .btn-danger {
   display: none;
 }
 main #contenedor .tarjetaIndice {
   list-style-type: none;
-  background-color: #808080;
+  background-color: url(../images/bkgCard.png);
   margin: 0.5rem;
   padding: 0.5rem;
   border: 3px solid #000000;
@@ -147,4 +159,10 @@ footer {
   width: 100%;
   height: 80px;
   background-color: grey;
+}
+
+@media only screen and (max-width: 375) {
+  header nav #logoNombre {
+    font-size: 2rem;
+  }
 }/*# sourceMappingURL=styles.css.map */

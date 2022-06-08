@@ -88,17 +88,11 @@ function selectIndice() {
 }
 
 function selectJuegos() {
-	resetView(),
-		(selectorBusqueda = "juegos"),
-		showBusqueda(),
-		renderJuegos(juegosAlfabeticos);
+	resetView(), (selectorBusqueda = "juegos"), showBusqueda(), renderJuegos(juegosAlfabeticos);
 }
 
 function selectFavoritos() {
-	resetView(),
-		(selectorBusqueda = "favoritos"),
-		showBusqueda(),
-		renderJuegos(juntarFavoritos());
+	resetView(), (selectorBusqueda = "favoritos"), showBusqueda(), renderJuegos(juntarFavoritos());
 }
 
 function selectCalendario() {
@@ -119,29 +113,31 @@ function renderJuegos(listaJuegos) {
 			<div class="contenedorImagen container-fluid d-flex align-items-center">
 				<img id="${juego.id}" class="imagen img-fluid" src=${juego.imagenJuego} alt="Tapa del juego" class="card-img-top" onclick="modalImg(src)">
 			</div>
-      <div class="container">
-        <div class="row justify-content-center align-items-center gx-0">
-          <div class="col-4">
-            <img class="img-fluid" src="./images/jugadores.svg" alt="cantidad de jugadores"> 
-          </div>
-          <div class="col-4">
-            <img class="img-fluid" src="./images/edad.svg" alt="edad recomendada"> 
-          </div>
-          <div class="col-4">
-            <img class="img-fluid" src="./images/reloj.svg" alt="tiempo minimo de juego"> 
-          </div>
-        </div>
-        <div class="row justify-content-center align-items-center gx-0">
-          <div class="col-4 text-center info">${juego.cantidadMinJugadores}-${juego.cantidadMaxJugadores}</div>
-          <div class="col-4 text-center info">${juego.edadJugadores}+</div>
-          <div class="col-4 text-center info">${juego.tiempoMinJuego}/${juego.tiempoMaxJuego}</div>
-        </div>
-      </div>
-			<div>
-				<a href=${juego.linkJuego} target="_blank" class="text-center btn btn-primary mb-2">Link a la BGG</a>
-				<button id="${juego.id}" value="${juego.linkVideo}" onclick="showVideo(value)" class="text-center btn btn-info mb-2">Video explicativo</button>
-				<button id="${juego.id}" onclick="localStorageSet(id)" class="text-center btn btn-success mb-2">Guardar en favoritos</button>
-				<button id="${juego.id}" onclick="localStorageRemove(id)" class="text-center btn btn-danger mb-2">Quitar de favoritos</button>
+			<div id="informacion">
+				<div class="container m-2">
+					<div class="row justify-content-center align-items-center gx-0">
+						<div class="col-4">
+							<img class="img-fluid" src="./images/jugadores.svg" alt="cantidad de jugadores"> 
+						</div>
+						<div class="col-4">
+							<img class="img-fluid" src="./images/edad.svg" alt="edad recomendada"> 
+						</div>
+						<div class="col-4">
+							<img class="img-fluid" src="./images/reloj.svg" alt="tiempo minimo de juego"> 
+						</div>
+					</div>
+					<div class="row justify-content-center align-items-center gx-0">
+						<div class="col-4 text-center info">${juego.cantidadMinJugadores}-${juego.cantidadMaxJugadores}</div>
+						<div class="col-4 text-center info">${juego.edadJugadores}+</div>
+						<div class="col-4 text-center info">${juego.tiempoMinJuego}/${juego.tiempoMaxJuego}</div>
+					</div>
+				</div>
+				<div>
+					<a href=${juego.linkJuego} target="_blank" class="text-center btn btn-primary mb-2">Link a la BGG</a>
+					<button id="${juego.id}" value="${juego.linkVideo}" onclick="showVideo(value)" class="text-center btn btn-info mb-2">Video explicativo</button>
+					<button id="${juego.id}" onclick="localStorageSet(id)" class="text-center btn btn-success mb-2">Guardar favorito</button>
+					<button id="${juego.id}" onclick="localStorageRemove(id)" class="text-center btn btn-danger mb-2">Quitar de favoritos</button>
+				</div>
 			</div>
 		</li>`
 		);
@@ -201,9 +197,7 @@ function busquedaNombre() {
 	for (i = 0; i < li.length; i += 1) {
 		a = li[i].querySelectorAll("h3")[0];
 		txtValue = a.textContent || a.innerText;
-		txtValue.toUpperCase().indexOf(filtro) > -1
-			? (li[i].style.display = "")
-			: (li[i].style.display = "none");
+		txtValue.toUpperCase().indexOf(filtro) > -1 ? (li[i].style.display = "") : (li[i].style.display = "none");
 	}
 }
 
@@ -212,8 +206,7 @@ function busquedaCantidad() {
 	let inputNumber = Number(input);
 	let li = document.querySelectorAll("#listado li");
 	for (i = 0; i < li.length; i += 1) {
-		inputNumber >= juegosAlfabeticos[i].cantidadMinJugadores &&
-		inputNumber <= juegosAlfabeticos[i].cantidadMaxJugadores
+		inputNumber >= juegosAlfabeticos[i].cantidadMinJugadores && inputNumber <= juegosAlfabeticos[i].cantidadMaxJugadores
 			? (li[i].style.display = "")
 			: (li[i].style.display = "none");
 	}
@@ -224,9 +217,7 @@ function busquedaEdad() {
 	let inputNumber = Number(input);
 	let li = document.querySelectorAll("#listado li");
 	for (i = 0; i < li.length; i += 1) {
-		inputNumber >= juegosAlfabeticos[i].edadJugadores
-			? (li[i].style.display = "")
-			: (li[i].style.display = "none");
+		inputNumber >= juegosAlfabeticos[i].edadJugadores ? (li[i].style.display = "") : (li[i].style.display = "none");
 	}
 }
 
@@ -234,9 +225,7 @@ function juntarFavoritos() {
 	todosFavoritos = [];
 	favoritosId = localStorageGet();
 	for (const id of favoritosId) {
-		todosFavoritos.push(
-			juegosAlfabeticos.find((favorito) => favorito.id == id)
-		);
+		todosFavoritos.push(juegosAlfabeticos.find((favorito) => favorito.id == id));
 	}
 	if (todosFavoritos == "") {
 		Swal.fire("Ups!!!", "No tenes ningun juego en favoritos.", "error");
@@ -251,11 +240,7 @@ function localStorageSet(id) {
 	} else {
 		nuevolocal.push(id);
 		localStorage.setItem("favoritos", JSON.stringify(nuevolocal));
-		Swal.fire(
-			"Juego guardado.",
-			"Se ha guardado el juego en favorito.",
-			"success"
-		);
+		Swal.fire("Juego guardado.", "Se ha guardado el juego en favorito.", "success");
 	}
 	renderJuegos(juegosAlfabeticos);
 }
