@@ -1,18 +1,19 @@
 const contenedor = document.querySelector("#contenedor");
 const busquedas = document.querySelector("#busquedas");
 const btnUP = document.querySelector("#btnUp");
+const btnHome = document.querySelector("#btnHome");
 const btnIndice = document.querySelector("#btnIndice");
 const btnJuegos = document.querySelector("#btnJuegos");
 const btnFavoritos = document.querySelector("#btnFavoritos");
 const btnCalendario = document.querySelector("#btnCalendario");
-const logo = document.querySelector('#logo')
-const btnradio1 = document.querySelector("#btnradio1")
-const btnradio2 = document.querySelector("#btnradio2")
-const btnradio3 = document.querySelector("#btnradio3")
-const contenedorNombre = document.querySelector("#contenedorNombre")
-const contenedorCantidad = document.querySelector("#contenedorCantidad")
-const contenedorEdad = document.querySelector("#contenedorEdad")
-const radioBtn = document.querySelectorAll('input[name="btnradio"]')
+const logo = document.querySelector("#logo");
+const btnradio1 = document.querySelector("#btnradio1");
+const btnradio2 = document.querySelector("#btnradio2");
+const btnradio3 = document.querySelector("#btnradio3");
+const contenedorNombre = document.querySelector("#contenedorNombre");
+const contenedorCantidad = document.querySelector("#contenedorCantidad");
+const contenedorEdad = document.querySelector("#contenedorEdad");
+const radioBtn = document.querySelectorAll('input[name="btnradio"]');
 
 let selectorBusqueda;
 let juegosAlfabeticos = [];
@@ -33,6 +34,7 @@ if (localStorage.getItem("favoritos") == null) {
 	localStorage.setItem("favoritos", "[]");
 }
 
+btnHome.addEventListener("click", reload);
 btnIndice.addEventListener("click", selectIndice);
 btnJuegos.addEventListener("click", selectJuegos);
 btnFavoritos.addEventListener("click", selectFavoritos);
@@ -41,44 +43,44 @@ btnUP.addEventListener("click", irArriba);
 logo.addEventListener("click", reload);
 
 radioBtn.forEach((radioButton) => {
-	radioButton.addEventListener("change", function(){
-		if (this.checked){
+	radioButton.addEventListener("change", function () {
+		if (this.checked) {
 			mostrarBusqueda(this.id);
 		}
 	});
 });
 
 function showBusqueda() {
-  if (selectorBusqueda == "juegos") {
-    busquedas.style.display = "block"
-  } else {
-    busquedas.style.display = "none"
-  }
+	if (selectorBusqueda == "juegos") {
+		busquedas.style.display = "block";
+	} else {
+		busquedas.style.display = "none";
+	}
 }
 
-function mostrarBusqueda(buscador){
+function mostrarBusqueda(buscador) {
 	switch (buscador) {
-    case "btnradio1":
-      contenedorNombre.style.display = "flex"
-      contenedorCantidad.style.display = "none"
-      contenedorEdad.style.display = "none"
-      break
-    case "btnradio2":
-      contenedorNombre.style.display = "none"
-      contenedorCantidad.style.display = "flex"
-      contenedorEdad.style.display = "none"
-      break
-    case "btnradio3":
-      contenedorNombre.style.display = "none"
-      contenedorCantidad.style.display = "none"
-      contenedorEdad.style.display = "flex"
-      break
-    default:
-      contenedorNombre.style.display = "flex"
-      contenedorCantidad.style.display = "none"
-      contenedorEdad.style.display = "none"
-      break
-  }
+		case "btnradio1":
+			contenedorNombre.style.display = "flex";
+			contenedorCantidad.style.display = "none";
+			contenedorEdad.style.display = "none";
+			break;
+		case "btnradio2":
+			contenedorNombre.style.display = "none";
+			contenedorCantidad.style.display = "flex";
+			contenedorEdad.style.display = "none";
+			break;
+		case "btnradio3":
+			contenedorNombre.style.display = "none";
+			contenedorCantidad.style.display = "none";
+			contenedorEdad.style.display = "flex";
+			break;
+		default:
+			contenedorNombre.style.display = "flex";
+			contenedorCantidad.style.display = "none";
+			contenedorEdad.style.display = "none";
+			break;
+	}
 }
 
 function selectIndice() {
@@ -99,11 +101,11 @@ function selectFavoritos() {
 		renderJuegos(juntarFavoritos());
 }
 
-function selectCalendario(){
+function selectCalendario() {
 	resetView(),
-    (selectorBusqueda = "calendario"),
+		(selectorBusqueda = "calendario"),
 		showBusqueda(),
-      (contenedor.innerHTML = `<iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23ffffff&ctz=America%2FArgentina%2FBuenos_Aires&showNav=1&showCalendars=0&src=cnZlZ2U4ZmE5bHRzOWd2NGI1OGg4cjU3bWdAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&src=ZXMuYXIjaG9saWRheUBncm91cC52LmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23C0CA33&color=%237986CB" frameborder="0" scrolling="no" id="calendario"></iframe>`)
+		(contenedor.innerHTML = `<iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23ffffff&ctz=America%2FArgentina%2FBuenos_Aires&showNav=1&showCalendars=0&src=cnZlZ2U4ZmE5bHRzOWd2NGI1OGg4cjU3bWdAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&src=ZXMuYXIjaG9saWRheUBncm91cC52LmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23C0CA33&color=%237986CB" frameborder="0" scrolling="no" id="calendario"></iframe>`);
 }
 
 function renderJuegos(listaJuegos) {
@@ -111,8 +113,8 @@ function renderJuegos(listaJuegos) {
 	let listado = document.querySelector("#listado");
 	for (const juego of listaJuegos) {
 		listado.insertAdjacentHTML(
-      "beforeend",
-      `<li class="card col tarjeta">
+			"beforeend",
+			`<li class="card col tarjeta">
 			<h3 class="titulo text-center">${juego.nombreJuego}</h3>
 			<div class="contenedorImagen container-fluid d-flex align-items-center">
 				<img id="${juego.id}" class="imagen img-fluid" src=${juego.imagenJuego} alt="Tapa del juego" class="card-img-top" onclick="modalImg(src)">
@@ -142,10 +144,10 @@ function renderJuegos(listaJuegos) {
 				<button id="${juego.id}" onclick="localStorageRemove(id)" class="text-center btn btn-danger mb-2">Quitar de favoritos</button>
 			</div>
 		</li>`
-    )
+		);
 		const btnGuardar = document.querySelectorAll(".btn-success");
 		const btnEliminar = document.querySelectorAll(".btn-danger");
-				
+
 		const btnSelector = localStorageGet();
 		btnGuardar.forEach((btn) => {
 			if (btnSelector.find((favorito) => favorito == btn.id)) {
@@ -299,10 +301,9 @@ function showVideo(value) {
 
 function modalImg(src) {
 	Swal.fire({
-    imageUrl: src,
-    imageAlt: "Tapa del Juego",
-  })
-	
+		imageUrl: src,
+		imageAlt: "Tapa del Juego",
+	});
 }
 
 function reload() {
