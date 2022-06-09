@@ -40,6 +40,13 @@ header nav .btn-lg {
   margin: 2px;
   max-width: 180px;
 }
+header nav .active {
+  background-color: #555555;
+  color: white;
+}
+header nav .nav-item {
+  margin-left: auto;
+}
 
 main {
   margin-bottom: 5rem;
@@ -88,7 +95,7 @@ main #contenedor .card {
   margin: 0.5rem;
   border: 2px solid #000000;
   border-radius: 20px;
-  min-width: 180px;
+  min-width: 160px;
   max-width: 200px;
   height: -webkit-fit-content;
   height: -moz-fit-content;
@@ -120,12 +127,13 @@ main #contenedor .card #contenedorInformacion .info {
   font-weight: 600;
 }
 main #contenedor .card #contenedorInformacion #btnsInformacion {
-  display: none;
+  display: block;
 }
 main #contenedor .card #contenedorInformacion #btnsInformacion .btn {
   width: 100%;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   text-transform: uppercase;
+  font-weight: 500;
   color: black;
 }
 main #contenedor .card #contenedorInformacion #btnsInformacion .btn-danger {
@@ -155,6 +163,9 @@ footer {
 @media (max-width: 460px) {
   main #contenedor .card {
     max-width: 150px;
+  }
+  main #contenedor .card #contenedorInformacion {
+    max-width: 140px;
   }
 }
 @media (max-width: 375px) {

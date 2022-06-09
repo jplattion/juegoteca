@@ -34,6 +34,13 @@ header {
 			margin: 2px;
 			max-width: 180px;
 		}
+		.active {
+			background-color: $bkgBtnActive;
+			color: white;
+		}
+		.nav-item {
+			margin-left: auto;
+		}
 	}
 }
 
@@ -84,7 +91,7 @@ main {
 			margin: 0.5rem;
 			border: 2px solid $borderCard;
 			border-radius: 20px;
-			min-width: 180px;
+			min-width: 160px;
 			max-width: 200px;
 			height: fit-content;
 			.titulo {
@@ -114,11 +121,12 @@ main {
 					font-weight: 600;
 				}
 				#btnsInformacion {
-					display: none;
+					display: block;
 					.btn {
 						width: 100%;
-						font-size: 0.8rem;
+						font-size: 0.9rem;
 						text-transform: uppercase;
+						font-weight: 500;
 						color: black;
 					}
 					.btn-danger {
@@ -155,7 +163,9 @@ footer {
 		#contenedor {
 			.card {
 				max-width: 150px;
-				// width: 160px;
+				#contenedorInformacion {
+					max-width: 140px;
+				}
 			}
 		}
 	}
