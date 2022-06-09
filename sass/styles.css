@@ -34,7 +34,7 @@ header nav #logoNombre {
 header nav .btn-lg {
   text-transform: uppercase;
   font-weight: 600;
-  background-color: #15b5ff;
+  background-color: #979797;
   border: 2px solid #000000;
   border-radius: 10px;
   margin: 2px;
@@ -88,9 +88,11 @@ main #contenedor .card {
   margin: 0.5rem;
   border: 2px solid #000000;
   border-radius: 20px;
-  min-width: 170px;
+  min-width: 180px;
   max-width: 200px;
-  height: 650px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 main #contenedor .card .titulo {
   font-family: "Fredoka", sans-serif;
@@ -109,39 +111,28 @@ main #contenedor .card .titulo {
 main #contenedor .card .contenedorImagen {
   max-width: 175px;
 }
-main #contenedor .card #informacion {
-  position: absolute;
-  bottom: 0px;
+main #contenedor .card #contenedorInformacion #informacion {
+  max-width: 175px;
 }
-main #contenedor .card #informacion .info {
+main #contenedor .card #contenedorInformacion .info {
   font-size: 0.8rem;
   text-shadow: 0 0 5px white, 0 0 10px white, 0 0 15px white, 0 0 20px white, 0 0 25px white, -2px 0 10px white, -2px 0 15px white, -2px 0 20px white, -2px 0 25px white, 2px 0 10px white, 2px 0 15px white, 2px 0 20px white, 2px 0 25px white;
   font-weight: 600;
 }
-main #contenedor .card #informacion .btn {
+main #contenedor .card #contenedorInformacion #btnsInformacion {
+  display: none;
+}
+main #contenedor .card #contenedorInformacion #btnsInformacion .btn {
   width: 100%;
   font-size: 0.8rem;
   text-transform: uppercase;
   color: black;
 }
-main #contenedor .card #informacion .btn-danger {
+main #contenedor .card #contenedorInformacion #btnsInformacion .btn-danger {
   display: none;
 }
-main #contenedor .tarjetaIndice {
-  list-style-type: none;
-  background-color: url(../images/bkgCard.png);
-  margin: 0.5rem;
-  padding: 0.5rem;
-  border: 3px solid #000000;
-  border-radius: 20px;
-  width: 80%;
-  max-width: 600px;
-}
-main #contenedor .tarjetaIndice .indice {
-  font-size: 1rem;
-  margin: 2px;
-}
 main #contenedor #calendario {
+  margin-top: 5rem;
   margin-bottom: 10rem;
   max-width: 1200px;
   width: 80vw;
@@ -161,7 +152,12 @@ footer {
   background-color: grey;
 }
 
-@media only screen and (max-width: 375) {
+@media (max-width: 460px) {
+  main #contenedor .card {
+    max-width: 150px;
+  }
+}
+@media (max-width: 375px) {
   header nav #logoNombre {
     font-size: 2rem;
   }

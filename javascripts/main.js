@@ -2,7 +2,6 @@ const contenedor = document.querySelector("#contenedor");
 const busquedas = document.querySelector("#busquedas");
 const btnUP = document.querySelector("#btnUp");
 const btnHome = document.querySelector("#btnHome");
-const btnIndice = document.querySelector("#btnIndice");
 const btnJuegos = document.querySelector("#btnJuegos");
 const btnFavoritos = document.querySelector("#btnFavoritos");
 const btnCalendario = document.querySelector("#btnCalendario");
@@ -14,6 +13,7 @@ const contenedorNombre = document.querySelector("#contenedorNombre");
 const contenedorCantidad = document.querySelector("#contenedorCantidad");
 const contenedorEdad = document.querySelector("#contenedorEdad");
 const radioBtn = document.querySelectorAll('input[name="btnradio"]');
+const card = document.querySelectorAll(".card");
 
 let selectorBusqueda;
 let juegosAlfabeticos = [];
@@ -35,7 +35,6 @@ if (localStorage.getItem("favoritos") == null) {
 }
 
 btnHome.addEventListener("click", reload);
-btnIndice.addEventListener("click", selectIndice);
 btnJuegos.addEventListener("click", selectJuegos);
 btnFavoritos.addEventListener("click", selectFavoritos);
 btnCalendario.addEventListener("click", selectCalendario);
@@ -83,10 +82,6 @@ function mostrarBusqueda(buscador) {
 	}
 }
 
-function selectIndice() {
-	resetView(), (selectorBusqueda = "indice"), indice(), showBusqueda();
-}
-
 function selectJuegos() {
 	resetView(), (selectorBusqueda = "juegos"), showBusqueda(), renderJuegos(juegosAlfabeticos);
 }
@@ -103,18 +98,18 @@ function selectCalendario() {
 }
 
 function renderJuegos(listaJuegos) {
-	contenedor.innerHTML = `<ul id="listado" class="row container-fluid justify-content-center gx-0 p-0"></ul>`;
+	contenedor.innerHTML = `<ul id="listado" class="row gx-0 p-0" data-masonry='{"percentPosition": true,  "itemSelector": ".card"}'></ul>`;
 	let listado = document.querySelector("#listado");
 	for (const juego of listaJuegos) {
 		listado.insertAdjacentHTML(
 			"beforeend",
-			`<li class="card col tarjeta">
+			`<li id="${juego.id}" class="card col justify-content-center">
 			<h3 class="titulo text-center">${juego.nombreJuego}</h3>
 			<div class="contenedorImagen container-fluid d-flex align-items-center">
-				<img id="${juego.id}" class="imagen img-fluid" src=${juego.imagenJuego} alt="Tapa del juego" class="card-img-top" onclick="modalImg(src)">
+			<img id="${juego.id}" class="imagen img-fluid" src=${juego.imagenJuego} alt="Tapa del juego" class="card-img-top" onclick="modalImg(src)">
 			</div>
-			<div id="informacion">
-				<div class="container m-2">
+			<div id="contenedorInformacion">
+				<div class="container m-2" id="informacion">
 					<div class="row justify-content-center align-items-center gx-0">
 						<div class="col-4">
 							<img class="img-fluid" src="./images/jugadores.svg" alt="cantidad de jugadores"> 
@@ -132,7 +127,7 @@ function renderJuegos(listaJuegos) {
 						<div class="col-4 text-center info">${juego.tiempoMinJuego}/${juego.tiempoMaxJuego}</div>
 					</div>
 				</div>
-				<div>
+				<div id="btnsInformacion">
 					<a href=${juego.linkJuego} target="_blank" class="text-center btn btn-primary mb-2">Link a la BGG</a>
 					<button id="${juego.id}" value="${juego.linkVideo}" onclick="showVideo(value)" class="text-center btn btn-info mb-2">Video explicativo</button>
 					<button id="${juego.id}" onclick="localStorageSet(id)" class="text-center btn btn-success mb-2">Guardar favorito</button>
@@ -156,6 +151,17 @@ function renderJuegos(listaJuegos) {
 			}
 		});
 	}
+	setTimeout(() => {
+		masonryLayout();
+	}, 1500);
+}
+
+function masonryLayout() {
+	let msnry = new Masonry("#contenedor", {
+		itemSelector: ".card",
+		initLayout: false,
+	});
+	msnry.layout();
 }
 
 window.onscroll = function () {
@@ -178,14 +184,6 @@ function irArriba() {
 function resetView() {
 	while (contenedor.hasChildNodes()) {
 		contenedor.removeChild(contenedor.firstChild);
-	}
-}
-
-function indice() {
-	contenedor.innerHTML = `<ul id="listado" class="container tarjetaIndice"></ul>`;
-	let card = document.querySelector(".tarjetaIndice");
-	for (let i = 0; i < juegosAlfabeticos.length; i += 1) {
-		card.innerHTML += `<li><h3 class="indice text-center ">${juegosAlfabeticos[i].nombreJuego}</h3></li>`;
 	}
 }
 

@@ -84,15 +84,14 @@ main {
 			margin: 0.5rem;
 			border: 2px solid $borderCard;
 			border-radius: 20px;
-			min-width: 170px;
+			min-width: 180px;
 			max-width: 200px;
-			height: 650px;
+			height: fit-content;
 			.titulo {
 				font-family: "Fredoka", sans-serif;
 				display: flex;
 				color: black;
 				text-shadow: $shadowTitulo;
-				// background-color: $bkgTitulo;
 				text-transform: uppercase;
 				font-size: 1.1rem;
 				font-weight: 600;
@@ -105,41 +104,31 @@ main {
 			.contenedorImagen {
 				max-width: 175px;
 			}
-			#informacion {
-				position: absolute;
-				bottom: 0px;
+			#contenedorInformacion {
+				#informacion {
+					max-width: 175px;
+				}
 				.info {
 					font-size: 0.8rem;
 					text-shadow: $shadowTitulo;
 					font-weight: 600;
-					// font-family: "Unica One", arial;
 				}
-				.btn {
-					width: 100%;
-					font-size: 0.8rem;
-					text-transform: uppercase;
-					color: black;
-				}
-				.btn-danger {
+				#btnsInformacion {
 					display: none;
+					.btn {
+						width: 100%;
+						font-size: 0.8rem;
+						text-transform: uppercase;
+						color: black;
+					}
+					.btn-danger {
+						display: none;
+					}
 				}
-			}
-		}
-		.tarjetaIndice {
-			list-style-type: none;
-			background-color: $bkgCard;
-			margin: 0.5rem;
-			padding: 0.5rem;
-			border: 3px solid $borderCard;
-			border-radius: 20px;
-			width: 80%;
-			max-width: 600px;
-			.indice {
-				font-size: 1rem;
-				margin: 2px;
 			}
 		}
 		#calendario {
+			margin-top: 5rem;
 			margin-bottom: 10rem;
 			max-width: 1200px;
 			width: 80vw;
@@ -161,7 +150,18 @@ footer {
 	background-color: grey;
 }
 
-@media only screen and (max-width: 375) {
+@media (max-width: 460px) {
+	main {
+		#contenedor {
+			.card {
+				max-width: 150px;
+				// width: 160px;
+			}
+		}
+	}
+}
+
+@media (max-width: 375px) {
 	header nav #logoNombre {
 		font-size: 2rem;
 	}
