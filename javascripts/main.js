@@ -121,7 +121,7 @@ function renderJuegos(listaJuegos) {
 							<img class="img-fluid" src="./images/reloj.svg" alt="tiempo minimo de juego"> 
 						</div>
 					</div>
-					<div class="row justify-content-center align-items-center gx-0">
+					<div class="row justify-content-center align-items-center gx-0" id="textInfo">
 						<div class="col-4 text-center info">${juego.cantidadMinJugadores}-${juego.cantidadMaxJugadores}</div>
 						<div class="col-4 text-center info">${juego.edadJugadores}+</div>
 						<div class="col-4 text-center info">${juego.tiempoMinJuego}/${juego.tiempoMaxJuego}</div>
